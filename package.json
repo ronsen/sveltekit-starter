@@ -1,0 +1,31 @@
+{
+	"name": "sveltekit-prisma-crud",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^1.0.0",
+		"@sveltejs/kit": "^1.0.0",
+		"@types/node": "^18.11.18",
+		"autoprefixer": "^10.4.13",
+		"postcss": "^8.4.20",
+		"prisma": "^4.8.1",
+		"svelte": "^3.54.0",
+		"svelte-check": "^2.9.2",
+		"tailwindcss": "^3.2.4",
+		"ts-node": "^10.9.1",
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.4",
+		"vite": "^4.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"@prisma/client": "^4.8.1"
+	}
+}
