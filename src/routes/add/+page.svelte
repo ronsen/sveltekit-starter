@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>Add New Note</title>
+</svelte:head>
+
 <form method="post">
     <div class="mb-3">
         <input type="text" name="title" placeholder="Title" class="w-full p-2 border border-gray-300 rounded" required>

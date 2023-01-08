@@ -19,11 +19,11 @@ export const actions: Actions = {
         const prisma = new PrismaClient();
         const note = await prisma.note.update({
             where: {
-                id: parseInt(data.get('id'))
+                id: parseInt(String(data.get('id')))
             },
             data: {
-                title: data.get('title').trim(),
-                content: data.get('content').trim()
+                title: String(data.get('title')).trim(),
+                content: String(data.get('content')).trim()
             }
         });
 

@@ -9,8 +9,8 @@ export const actions: Actions = {
         const prisma = new PrismaClient();
         await prisma.note.create({
             data: {
-                title: data.get('title').trim(),
-                content: data.get('content').trim()
+                title: String(data.get('title')).trim(),
+                content: String(data.get('content')).trim()
             }
         });
 

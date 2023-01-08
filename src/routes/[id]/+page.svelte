@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Edit from "../../../src/components/edit.svelte";
-  import Delete from "../../../src/components/delete.svelte";
+  import Delete from "$lib/icons/delete.svelte";
+  import Edit from "$lib/icons/edit.svelte";
   import type { PageServerData } from "./$types";
 
   export let data: PageServerData;
@@ -8,6 +8,10 @@
   const title = data.note?.title;
   const content = data.note?.content?.replace(/(?:\r\n|\r|\n)/g, "<br>");
 </script>
+
+<svelte:head>
+    <title>{title}</title>
+</svelte:head>
 
 <article>
   <div class="flex justify-between items-center border-b border-gray-200 pb-2 mb-3">

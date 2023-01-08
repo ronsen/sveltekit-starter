@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Delete from "../components/delete.svelte";
-  import Edit from "../components/edit.svelte";
+  import Delete from "$lib/icons/delete.svelte";
+  import Edit from "$lib/icons/edit.svelte";
   import type { PageServerData } from "./$types";
 
   export let data: PageServerData;
@@ -11,6 +11,10 @@
         Empty.
     </div>
 {/if}
+
+<svelte:head>
+    <title>Catatan</title>
+</svelte:head>
 
 <div class="notes">
     {#each data.notes as note}

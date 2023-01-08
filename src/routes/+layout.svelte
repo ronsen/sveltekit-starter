@@ -1,5 +1,5 @@
 <script>
-  import Add from "../components/add.svelte";
+  import Add from "$lib/icons/add.svelte";
   import "../app.css";
 </script>
 

@@ -20,7 +20,7 @@ export const actions: Actions = {
         const prisma = new PrismaClient();
         await prisma.note.delete({
             where: {
-                id: parseInt(data.get('id'))
+                id: parseInt(String(data.get('id')))
             }
         });
 
