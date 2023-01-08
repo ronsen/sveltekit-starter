@@ -14,3 +14,13 @@ Migrate database:
 ```bash
 npx prisma migrate dev --name init
 ```
+
+## Docker
+
+Run these following command to create a Docker container:
+
+```bash
+docker build --tag catatan:1.0 .
+docker container create --name catatan -p 3000:3000 catatan:1.0
+docker container start catatan
+```
