@@ -8,3 +8,9 @@ Run these following commands to try this project:
 npm install
 npm run dev
 ```
+
+Migrate database:
+
+```bash
+npx prisma migrate dev --name init
+```
