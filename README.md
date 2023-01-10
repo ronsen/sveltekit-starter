@@ -15,6 +15,12 @@ Migrate database:
 npx prisma migrate dev --name init
 ```
 
+Database seeding:
+
+```bash
+npx prisma db seed
+```
+
 ## Docker
 
 Run these following command to create a Docker container:

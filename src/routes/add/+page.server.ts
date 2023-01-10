@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import slugify from 'slugify';
 
 export const actions: Actions = {
     default: async ({ request }) => {
@@ -10,6 +11,7 @@ export const actions: Actions = {
         await prisma.note.create({
             data: {
                 title: String(data.get('title')).trim(),
+                slug: slugify(String(data.get('title')).trim().toLowerCase()),
                 content: String(data.get('content')).trim()
             }
         });

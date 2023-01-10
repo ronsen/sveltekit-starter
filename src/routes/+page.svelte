@@ -20,7 +20,7 @@
     {#each data.notes as note}
         <div class="note flex justify-between items-baseline border-b border-gray-200 pb-2 mb-2">
             <div class="note-title">
-                <a href="/{note.id}">{ note.title }</a>
+                <a href="/{note.id}/{note.slug}">{ note.title }</a>
             </div>
             <div class="inline-flex gap-3">
                 <a href="/{note.id}/edit" class="text-gray-500"><Edit /></a>
