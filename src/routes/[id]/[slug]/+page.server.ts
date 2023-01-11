@@ -8,6 +8,8 @@ export const load = (async ({ params }) => {
             id: parseInt(params.id)
         },
     });
+
+    await prisma.$disconnect();
     
     return { note };
 }) satisfies PageServerLoad;

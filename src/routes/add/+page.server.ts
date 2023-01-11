@@ -7,14 +7,16 @@ export const actions: Actions = {
     default: async ({ request }) => {
         const data = await request.formData();
 
+        const title = String(data.get('title')).trim();
+        const slug = slugify(title.toLowerCase());
+        const content = String(data.get('content')).trim();
+
         const prisma = new PrismaClient();
         await prisma.note.create({
-            data: {
-                title: String(data.get('title')).trim(),
-                slug: slugify(String(data.get('title')).trim().toLowerCase()),
-                content: String(data.get('content')).trim()
-            }
+            data: { title, slug, content }
         });
+
+        await prisma.$disconnect();
 
         throw redirect(302, '/');
     }
