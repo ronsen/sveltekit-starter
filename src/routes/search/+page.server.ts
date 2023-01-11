@@ -3,8 +3,7 @@ import type { PageServerLoad } from "./$types";
 
 export const load = (async ({ url }) => {
     const q = String(url.searchParams.get('q')).trim();
-    const p = url.searchParams.get('page') ?? '1';
-    const page = parseInt(p);
+    const page = Number(url.searchParams.get('page') ?? '1');
 
     const prisma = new PrismaClient();
     const notes = await prisma.note.findMany({

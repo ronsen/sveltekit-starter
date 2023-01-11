@@ -1,12 +1,10 @@
-import { PrismaClient } from '@prisma/client';
 import type { PageServerLoad } from './$types';
+import { db } from '$lib/database';
 
 export const load = (async ({ url }) => {
-    const p = url.searchParams.get('page') ?? '1';
-    const page = parseInt(p);
+    const page = Number(url.searchParams.get('page') ?? '1');
 
-    const prisma = new PrismaClient();
-    const notes = await prisma.note.findMany({
+    const notes = await db.note.findMany({
         take: 10,
         skip: page == 1 ? 0 : (page - 1) * 10,
         orderBy: [{ id: 'desc'}]

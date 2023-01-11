@@ -1,12 +1,11 @@
-import { PrismaClient } from "@prisma/client";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad, Actions } from "./$types";
+import { db } from '$lib/database';
 
 export const load = (async ({ params }) => {
-    const prisma = new PrismaClient();
-    const note = await prisma.note.findUnique({
+    const note = await db.note.findUnique({
         where: {
-            id: parseInt(params.id)
+            id: Number(params.id)
         },
     });
     
@@ -17,10 +16,9 @@ export const actions: Actions = {
     default: async ({ request }) => {
         const data = await request.formData();
 
-        const prisma = new PrismaClient();
-        await prisma.note.delete({
+        await db.note.delete({
             where: {
-                id: parseInt(String(data.get('id')))
+                id: Number(String(data.get('id')))
             }
         });
 

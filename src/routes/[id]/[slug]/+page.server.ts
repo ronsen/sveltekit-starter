@@ -1,15 +1,12 @@
-import { PrismaClient } from "@prisma/client";
 import type { PageServerLoad } from "./$types";
+import { db } from '$lib/database';
 
 export const load = (async ({ params }) => {
-    const prisma = new PrismaClient();
-    const note = await prisma.note.findUnique({
+    const note = await db.note.findUnique({
         where: {
-            id: parseInt(params.id)
+            id: Number(params.id)
         },
     });
-
-    await prisma.$disconnect();
     
     return { note };
 }) satisfies PageServerLoad;

@@ -6,7 +6,7 @@
 </script>
 
 {#if (notes.length == 0)}
-    <div class="p-3 bg-yellow-50 border border-yellow-100">
+    <div class="p-3 bg-yellow-50 border border-yellow-100 mb-6">
         Empty.
     </div>
 {:else}

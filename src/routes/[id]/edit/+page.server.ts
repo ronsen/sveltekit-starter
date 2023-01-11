@@ -1,13 +1,12 @@
-import { PrismaClient } from "@prisma/client";
 import type { PageServerLoad, Actions } from "./$types";
 import { redirect } from '@sveltejs/kit';
+import { db } from '$lib/database';
 import slugify from 'slugify';
 
 export const load = (async ({ params }) => {
-    const prisma = new PrismaClient();
-    const note = await prisma.note.findUnique({
+    const note = await db.note.findUnique({
         where: {
-            id: parseInt(params.id)
+            id: Number(params.id)
         },
     });
     return { note };
@@ -21,15 +20,12 @@ export const actions: Actions = {
         const slug = slugify(title.toLowerCase());
         const content = String(data.get('content')).trim();
 
-        const prisma = new PrismaClient();
-        const note = await prisma.note.update({
+        const note = await db.note.update({
             where: {
-                id: parseInt(String(data.get('id')))
+                id: Number(String(data.get('id')))
             },
             data: { title, slug, content }
         });
-
-        await prisma.$disconnect();
 
         throw redirect(302, '/' + note.id);
     }
