@@ -10,6 +10,6 @@
     <title>Catatan</title>
 </svelte:head>
 
-<Search q="" />
+<Search />
 
 <Notes notes={data.notes} />

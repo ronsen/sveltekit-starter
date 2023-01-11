@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let q: String;
+    export let q: String = '';
 </script>
 
 <form method="GET" action="/search">
