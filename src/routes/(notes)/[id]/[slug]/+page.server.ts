@@ -16,5 +16,9 @@ export const load = (async ({ locals, params }) => {
         },
     });
 
+    if (!note) {
+        throw redirect(302, '/');
+    }
+
     return { note };
 }) satisfies PageServerLoad;
