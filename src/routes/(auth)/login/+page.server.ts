@@ -21,27 +21,36 @@ export const actions: Actions = {
             where: { username }
         });
 
-        const validPassword = await bcrypt.compare(password, user?.password);
-
-        if (!validPassword) {
+        if (!user) {
             return fail(400, {
                 error: true,
-                message: 'You have entered invalid credentials.'
+                message: 'User not exists.'
             });
-        }
+        } else {
+            const validPassword = await bcrypt.compare(password, user.password);
 
+            if (!validPassword) {
+                return fail(400, {
+                    error: true,
+                    message: 'You have entered invalid credentials.'
+                });
+            }
+        }
+        
         const authenticatedUser = await db.user.update({
             where: { username: user?.username},
             data: { token: crypto.randomUUID()}
         });
 
-        cookies.set('session', authenticatedUser.token, {
-            path: '/',
-            httpOnly: true,
-            sameSite: 'strict',
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 60 * 60 * 24 * 30
-        });
+        if (authenticatedUser) {
+            cookies.set('session', String(authenticatedUser.token), {
+                path: '/',
+                httpOnly: true,
+                sameSite: 'strict',
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 60 * 60 * 24 * 30
+            });
+        }
 
         throw redirect(302, '/');
     }
