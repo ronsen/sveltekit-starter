@@ -7,11 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  token     String?  @unique
+  Note      Note[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Note {
   id        Int      @id @default(autoincrement())
   title     String
   slug      String
   content   String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

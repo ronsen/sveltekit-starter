@@ -4,7 +4,7 @@ import { db } from '$lib/database';
 import slugify from 'slugify';
 
 export const actions: Actions = {
-    default: async ({ request }) => {
+    default: async ({ locals, request }) => {
         const data = await request.formData();
 
         const title = String(data.get('title')).trim();
@@ -14,12 +14,12 @@ export const actions: Actions = {
         if (title.length == 0) {
             return fail(400, {
                 error: true,
-                message: 'Field <strong>Title</strong> cannot be blank.'
+                message: '<strong>Title</strong> can not be blank.'
             });
         }
 
         const note = await db.note.create({
-            data: { title, slug, content }
+            data: { title, slug, content, authorId: locals.user.id }
         });
 
         throw redirect(302, `/${note.id}/${note.slug}`);

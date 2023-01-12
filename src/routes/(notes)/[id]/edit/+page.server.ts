@@ -3,12 +3,16 @@ import { fail, redirect } from '@sveltejs/kit';
 import { db } from '$lib/database';
 import slugify from 'slugify';
 
-export const load = (async ({ params }) => {
-    const note = await db.note.findUnique({
+export const load = (async ({ locals, params }) => {
+    const note = await db.note.findFirst({
         where: {
-            id: Number(params.id)
+            AND: [
+                { authorId: locals.user.id },
+                { id: Number(params.id) },
+            ]
         },
     });
+    
     return { note };
 }) satisfies PageServerLoad;
 

@@ -1,6 +1,4 @@
 <script lang="ts">
-    import Delete from "$lib/icons/delete.svelte";
-    import Edit from "$lib/icons/edit.svelte";
     import Alert from "$lib/components/alert.svelte";
 
     export let notes: any;
@@ -16,8 +14,8 @@
                     <a href="/{note.id}/{note.slug}">{note.title}</a>
                 </div>
                 <div class="inline-flex gap-3">
-                    <a href="/{note.id}/edit" class="text-gray-500"><Edit /></a>
-                    <a href="/{note.id}/delete" class="text-gray-500"><Delete /></a>
+                    <a href="/{note.id}/edit" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
+                    <a href="/{note.id}/delete" class="text-gray-500"><i class="bi bi-trash"></i></a>
                 </div>
             </div>
         {/each}

@@ -2,10 +2,17 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad, Actions } from "./$types";
 import { db } from '$lib/database';
 
-export const load = (async ({ params }) => {
-    const note = await db.note.findUnique({
+export const load = (async ({ locals, params }) => {
+    if (!locals.user) {
+        throw redirect(302, '/login');
+    }
+    
+    const note = await db.note.findFirst({
         where: {
-            id: Number(params.id)
+            AND: [
+                { authorId: locals.user.id },
+                { id: Number(params.id) },
+            ]
         },
     });
     
