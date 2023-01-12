@@ -10,7 +10,7 @@ export const load = (async ({ locals, params }) => {
     const note = await db.note.findFirst({
         where: {
             AND: [
-                { authorId: locals.user.id },
+                { author: { id: locals.user.id } },
                 { id: Number(params.id) },
             ]
         },

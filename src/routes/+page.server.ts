@@ -10,9 +10,7 @@ export const load = (async ({ locals, url }) => {
     const page = Number(url.searchParams.get('page') ?? '1');
 
     const notes = await db.note.findMany({
-        where: {
-            authorId: locals.user.id
-        },
+        where: { author: { id: locals.user.id } },
         take: 10,
         skip: page == 1 ? 0 : (page - 1) * 10,
         orderBy: [{ id: 'desc'}]
