@@ -1,7 +1,8 @@
 <script lang="ts">
     import Alert from "$lib/components/alert.svelte";
+    import type { ActionData } from "./$types";
 
-    export let form: any;
+    export let form: ActionData;
 </script>
 
 <svelte:head>

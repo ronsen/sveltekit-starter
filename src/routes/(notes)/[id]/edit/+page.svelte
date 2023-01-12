@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { PageServerData } from "./$types";
+    import type { ActionData, PageServerData } from "./$types";
     import Alert from "$lib/components/alert.svelte";
   
     export let data: PageServerData;
-    export let form: any;
+    export let form: ActionData;
 </script>
 
 <svelte:head>
