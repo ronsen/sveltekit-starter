@@ -27,6 +27,6 @@ export const actions: Actions = {
             data: { title, slug, content }
         });
 
-        throw redirect(302, '/' + note.id);
+        throw redirect(302, `/${note.id}/${note.slug}`);
     }
 };
