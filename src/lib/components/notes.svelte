@@ -1,14 +1,13 @@
 <script lang="ts">
     import Delete from "$lib/icons/delete.svelte";
     import Edit from "$lib/icons/edit.svelte";
+    import Alert from "$lib/components/alert.svelte";
 
     export let notes: any;
 </script>
 
 {#if (notes.length == 0)}
-    <div class="p-3 bg-yellow-50 border border-yellow-100 mb-6">
-        Empty.
-    </div>
+    <Alert>Empty.</Alert>
 {:else}
     <div class="notes mb-6">
         {#each notes as note}

@@ -1,5 +1,5 @@
 import type { PageServerLoad, Actions } from "./$types";
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { db } from '$lib/database';
 import slugify from 'slugify';
 
@@ -19,6 +19,13 @@ export const actions: Actions = {
         const title = String(data.get('title')).trim();
         const slug = slugify(title.toLowerCase());
         const content = String(data.get('content')).trim();
+
+        if (title.length == 0) {
+            return fail(400, {
+                error: true,
+                message: 'Field <strong>Title</strong> cannot be blank.'
+            });
+        }
 
         const note = await db.note.update({
             where: {
