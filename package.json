@@ -15,7 +15,7 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^7.6.0",
-		"@sveltejs/adapter-node": "^1.1.0",
+		"@sveltejs/adapter-auto": "^1.0.1",
 		"@sveltejs/kit": "^1.0.0",
 		"@types/bcrypt": "^5.0.0",
 		"@types/node": "^18.11.18",

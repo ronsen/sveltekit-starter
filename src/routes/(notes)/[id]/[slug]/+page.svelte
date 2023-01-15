@@ -15,8 +15,8 @@
   <div class="flex justify-between items-center border-b border-gray-200 pb-2 mb-3">
     <div class="title font-bold">{title}</div>
     <div class="inline-flex gap-3">
-      <a href="/{data.note?.id}/edit" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
-      <a href="/{data.note?.id}/delete" class="text-gray-500"><i class="bi bi-trash"></i></a>
+      <a href="/{data.note?.id}/edit" title="Edit Note" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
+      <a href="/{data.note?.id}/delete" title="Delete Note" class="text-gray-500"><i class="bi bi-trash"></i></a>
     </div>
   </div>
 

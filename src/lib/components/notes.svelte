@@ -14,8 +14,8 @@
                     <a href="/{note.id}/{note.slug}">{note.title}</a>
                 </div>
                 <div class="inline-flex gap-3">
-                    <a href="/{note.id}/edit" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
-                    <a href="/{note.id}/delete" class="text-gray-500"><i class="bi bi-trash"></i></a>
+                    <a href="/{note.id}/edit" title="Edit Note" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
+                    <a href="/{note.id}/delete" title="Delete Note" class="text-gray-500"><i class="bi bi-trash"></i></a>
                 </div>
             </div>
         {/each}
