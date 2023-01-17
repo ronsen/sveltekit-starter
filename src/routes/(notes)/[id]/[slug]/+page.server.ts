@@ -20,5 +20,10 @@ export const load = (async ({ locals, params }) => {
         throw redirect(302, '/');
     }
 
-    return { note };
+    const newNote = {
+        ...note,
+        contentToHtml: note?.content?.replace(/(?:\r\n|\r|\n)/g, "<br>")
+    };
+
+    return { note: newNote };
 }) satisfies PageServerLoad;
