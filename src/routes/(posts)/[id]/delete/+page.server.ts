@@ -7,7 +7,7 @@ export const load = (async ({ locals, params }) => {
         throw redirect(302, '/login');
     }
     
-    const note = await db.note.findFirst({
+    const post = await db.post.findFirst({
         where: {
             AND: [
                 { author: { id: locals.user.id } },
@@ -16,14 +16,14 @@ export const load = (async ({ locals, params }) => {
         },
     });
     
-    return { note };
+    return { post };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
     default: async ({ request }) => {
         const data = await request.formData();
 
-        await db.note.delete({
+        await db.post.delete({
             where: {
                 id: Number(String(data.get('id')))
             }

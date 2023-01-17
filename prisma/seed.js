@@ -6,7 +6,7 @@ import bcrypt  from 'bcrypt';
 const prisma = new PrismaClient();
 
 async function main() {
-    await prisma.note.deleteMany();
+    await prisma.post.deleteMany();
     await prisma.user.deleteMany();
 
     const user = await prisma.user.create({
@@ -26,11 +26,11 @@ async function main() {
         const slug = slugify(title.toLowerCase());
         const content = faker.lorem.paragraphs(3, '\n\n');
      
-        const note = await prisma.note.create({
+        const post = await prisma.post.create({
             data: { title, slug, content, authorId: user.id }
         });
 
-        console.info(note.title);
+        console.info(post.title);
     }
 }
 

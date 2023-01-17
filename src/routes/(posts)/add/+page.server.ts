@@ -18,10 +18,10 @@ export const actions: Actions = {
             });
         }
 
-        const note = await db.note.create({
+        const post = await db.post.create({
             data: { title, slug, content, authorId: locals.user.id }
         });
 
-        throw redirect(302, `/${note.id}/${note.slug}`);
+        throw redirect(302, `/${post.id}/${post.slug}`);
     }
 };

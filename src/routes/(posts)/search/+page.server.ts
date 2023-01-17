@@ -11,12 +11,14 @@ export const load = (async ({ locals, url }) => {
     const page = Number(url.searchParams.get('page') ?? '1');
 
     const prisma = new PrismaClient();
-    const notes = await prisma.note.findMany({
+    const posts = await prisma.post.findMany({
         where: {
             OR: [
-                { authorId: locals.user.id },
                 { title: { contains: q }},
                 { content: { contains: q }}
+            ],
+            AND: [
+                { authorId: locals.user.id },
             ]
         },
         take: 10,
@@ -25,7 +27,7 @@ export const load = (async ({ locals, url }) => {
     });
 
     const prevPage = page == 1 ? 0 : page - 1;
-    const nextPage = notes.length < 10 ? 0 : page + 1;
+    const nextPage = posts.length < 10 ? 0 : page + 1;
 
-    return { q, notes, prevPage, nextPage };
+    return { q, posts, prevPage, nextPage };
 }) satisfies PageServerLoad;

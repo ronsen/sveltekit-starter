@@ -4,7 +4,7 @@ import { db } from '$lib/database';
 import slugify from 'slugify';
 
 export const load = (async ({ locals, params }) => {
-    const note = await db.note.findFirst({
+    const post = await db.post.findFirst({
         where: {
             AND: [
                 { author: { id: locals.user.id } },
@@ -13,11 +13,11 @@ export const load = (async ({ locals, params }) => {
         },
     });
 
-    if (!note) {
+    if (!post) {
         throw redirect(302, '/');
     }
     
-    return { note };
+    return { post };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
@@ -35,13 +35,13 @@ export const actions: Actions = {
             });
         }
 
-        const note = await db.note.update({
+        const post = await db.post.update({
             where: {
                 id: Number(String(data.get('id')))
             },
             data: { title, slug, content }
         });
 
-        throw redirect(302, `/${note.id}/${note.slug}`);
+        throw redirect(302, `/${post.id}/${post.slug}`);
     }
 };

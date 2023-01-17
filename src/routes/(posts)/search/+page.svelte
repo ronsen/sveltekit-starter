@@ -1,6 +1,6 @@
 <script lang="ts">
     import Navigation from "$lib/components/navigation.svelte";
-    import Notes from "$lib/components/notes.svelte";
+    import Posts from "$lib/components/posts.svelte";
     import Search from "$lib/components/search.svelte";
     import type { PageServerData } from "./$types";
 
@@ -13,6 +13,6 @@
 
 <Search q={data.q} />
 
-<Notes notes={data.notes} />
+<Posts posts={data.posts} />
 
 <Navigation href="/search?q={data.q}&" prevPage={data.prevPage} nextPage={data.nextPage} />

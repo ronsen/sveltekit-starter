@@ -7,7 +7,7 @@ export const load = (async ({ locals, params }) => {
         throw redirect(302, '/login');
     }
 
-    const note = await db.note.findFirst({
+    const post = await db.post.findFirst({
         where: {
             AND: [
                 { author: { id: locals.user.id } },
@@ -16,14 +16,14 @@ export const load = (async ({ locals, params }) => {
         },
     });
 
-    if (!note) {
+    if (!post) {
         throw redirect(302, '/');
     }
 
-    const newNote = {
-        ...note,
-        contentToHtml: note?.content?.replace(/(?:\r\n|\r|\n)/g, "<br>")
+    const newPost = {
+        ...post,
+        contentToHtml: post?.content?.replace(/(?:\r\n|\r|\n)/g, "<br>")
     };
 
-    return { note: newNote };
+    return { post: newPost };
 }) satisfies PageServerLoad;
