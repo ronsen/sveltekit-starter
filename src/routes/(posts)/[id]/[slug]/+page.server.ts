@@ -1,6 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { db } from '$lib/database';
 import { redirect } from "@sveltejs/kit";
+import MarkdownIt from "markdown-it";
 
 export const load = (async ({ locals, params }) => {
     if (!locals.user) {
@@ -20,10 +21,10 @@ export const load = (async ({ locals, params }) => {
         throw redirect(302, '/');
     }
 
-    const newPost = {
-        ...post,
-        contentToHtml: post?.content?.replace(/(?:\r\n|\r|\n)/g, "<br>")
+    return {
+        post: {
+            ...post,
+            contentToHtml: new MarkdownIt().render(String(post?.content))
+        }
     };
-
-    return { post: newPost };
 }) satisfies PageServerLoad;

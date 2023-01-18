@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="content">
+  <div class="content prose max-w-none">
     {@html data.post?.contentToHtml}
   </div>
 </article>
