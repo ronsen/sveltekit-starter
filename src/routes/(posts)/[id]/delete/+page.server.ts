@@ -20,14 +20,10 @@ export const load = (async ({ locals, params }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    default: async ({ request }) => {
-        const { id } = Object.fromEntries(await request.formData()) as {
-            id: string,
-        };
-
+    default: async ({ params }) => {
         await db.post.delete({
             where: {
-                id: Number(id)
+                id: Number(params.id)
             }
         });
 

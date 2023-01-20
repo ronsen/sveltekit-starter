@@ -1,8 +1,8 @@
 # sveltekit-prisma-crud
 
-A simple CRUD project using SvelteKit, Prisma, sqlite, and TypeScript.
+A simple CRUD project using SvelteKit, Prisma, sqlite, Tailwind CSS, and TypeScript.
 
-Run these following commands to try this project:
+Clone this project and run these following commands to try locally:
 
 ```bash
 npm install
@@ -23,7 +23,7 @@ npx prisma db seed
 
 ## Docker
 
-Run these following command to create a Docker container:
+Run these following commands to create a Docker container:
 
 ```bash
 docker build --tag catatan:1.0 .

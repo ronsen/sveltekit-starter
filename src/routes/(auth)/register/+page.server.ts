@@ -5,10 +5,10 @@ import bcrypt from 'bcrypt';
 
 export const actions: Actions = {
     default: async ({ request }) => {
-        const data = await request.formData();
-
-        const username = String(data.get('username')).trim();
-        const password = String(data.get('password'));
+        const { username, password } = Object.fromEntries(await request.formData()) as {
+            username: string,
+            password: string
+        };
 
         if (!username || !password) {
             return fail(400, {
@@ -18,7 +18,7 @@ export const actions: Actions = {
         }
         
         const user = await db.user.findUnique({
-            where: { username }
+            where: { username: username.trim() }
         });
 
         if (user) {
@@ -30,7 +30,7 @@ export const actions: Actions = {
 
         await db.user.create({
             data: {
-                username,
+                username: username.trim(),
                 password: await bcrypt.hash(password, 10),
                 token: crypto.randomUUID()
             }
