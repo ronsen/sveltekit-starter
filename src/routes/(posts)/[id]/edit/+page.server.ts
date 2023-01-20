@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from "./$types";
 import { fail, redirect } from '@sveltejs/kit';
-import { db } from '$lib/database';
+import { db } from '$lib/server/database';
 import slugify from 'slugify';
 
 export const load = (async ({ locals, params }) => {
@@ -16,17 +16,16 @@ export const load = (async ({ locals, params }) => {
     if (!post) {
         throw redirect(302, '/');
     }
-    
+
     return { post };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    default: async ({ request }) => {
-        const data = await request.formData();
-
-        const title = String(data.get('title')).trim();
-        const slug = slugify(title.toLowerCase());
-        const content = String(data.get('content')).trim();
+    default: async ({ request, params }) => {
+        const { title, content } = Object.fromEntries(await request.formData()) as {
+            title: string,
+            content: string
+        };
 
         if (title.length == 0) {
             return fail(400, {
@@ -37,9 +36,13 @@ export const actions: Actions = {
 
         const post = await db.post.update({
             where: {
-                id: Number(String(data.get('id')))
+                id: Number(params.id)
             },
-            data: { title, slug, content }
+            data: {
+                title: title.trim(),
+                slug: slugify(title.toLowerCase()),
+                content: content.trim()
+            }
         });
 
         throw redirect(302, `/${post.id}/${post.slug}`);

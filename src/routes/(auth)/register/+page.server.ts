@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { db } from '$lib/database';
+import { db } from '$lib/server/database';
 import bcrypt from 'bcrypt';
 
 export const actions: Actions = {

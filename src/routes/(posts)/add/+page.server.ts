@@ -1,15 +1,14 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { db } from '$lib/database';
+import { db } from '$lib/server/database';
 import slugify from 'slugify';
 
 export const actions: Actions = {
     default: async ({ locals, request }) => {
-        const data = await request.formData();
-
-        const title = String(data.get('title')).trim();
-        const slug = slugify(title.toLowerCase());
-        const content = String(data.get('content')).trim();
+        const { title, content } = Object.fromEntries(await request.formData()) as {
+            title: string,
+            content: string
+        };
 
         if (title.length == 0) {
             return fail(400, {
@@ -19,7 +18,11 @@ export const actions: Actions = {
         }
 
         const post = await db.post.create({
-            data: { title, slug, content, authorId: locals.user.id }
+            data: {
+                title: title.trim(),
+                slug: slugify(title.trim().toLowerCase()),
+                content: content.trim(),
+                authorId: locals.user.id }
         });
 
         throw redirect(302, `/${post.id}/${post.slug}`);

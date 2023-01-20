@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad, Actions } from "./$types";
-import { db } from '$lib/database';
+import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, params }) => {
     if (!locals.user) {
@@ -21,11 +21,13 @@ export const load = (async ({ locals, params }) => {
 
 export const actions: Actions = {
     default: async ({ request }) => {
-        const data = await request.formData();
+        const { id } = Object.fromEntries(await request.formData()) as {
+            id: string,
+        };
 
         await db.post.delete({
             where: {
-                id: Number(String(data.get('id')))
+                id: Number(id)
             }
         });
 
