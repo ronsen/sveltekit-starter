@@ -1,4 +1,4 @@
-# sveltekit-prisma-crud
+# sveltekit-starter
 
 A simple CRUD project using SvelteKit, Prisma, sqlite, Tailwind CSS, and TypeScript.
 
