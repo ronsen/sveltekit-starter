@@ -2,6 +2,7 @@ import type { PageServerLoad } from "./$types";
 import { db } from '$lib/server/database';
 import { redirect } from "@sveltejs/kit";
 import MarkdownIt from "markdown-it";
+import { marked } from "marked";
 
 export const load = (async ({ locals, params }) => {
     if (!locals.user) {
@@ -24,7 +25,7 @@ export const load = (async ({ locals, params }) => {
     return {
         post: {
             ...post,
-            contentToHtml: new MarkdownIt().render(String(post?.content))
+            contentToHtml: marked.parse((post?.content as string).replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,""))
         }
     };
 }) satisfies PageServerLoad;
