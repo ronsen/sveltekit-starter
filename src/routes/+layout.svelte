@@ -9,6 +9,7 @@
   <div class="inline-flex gap-3">
     {#if $page.data.user}
       <a href="/add" title="Add New Note"><i class="bi bi-plus-circle"></i></a>
+      <a href="/settings" title="Settings"><i class="bi bi-gear"></i></a>
     {/if}
 
     {#if !$page.data.user}
