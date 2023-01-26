@@ -5,8 +5,7 @@ import bcrypt  from 'bcrypt';
 
 const prisma = new PrismaClient();
 
-async function main() {
-    await prisma.post.deleteMany();
+async function addUsers() {
     await prisma.user.deleteMany();
 
     const user = await prisma.user.create({
@@ -16,7 +15,11 @@ async function main() {
             token: crypto.randomUUID()
         }
     });
+}
 
+async function addPosts() {
+    await prisma.post.deleteMany();
+    
     for (let i = 0; i < 20; i++) {
         const words = faker.random.words(5).split(' ');
         const title = words.map((word) => {
@@ -29,9 +32,12 @@ async function main() {
         const post = await prisma.post.create({
             data: { title, slug, content, authorId: user.id }
         });
-
-        console.info(post.title);
     }
+}
+
+async function main() {
+    await addUsers();
+    await addPosts();
 }
 
 main()
