@@ -1,7 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import { db } from '$lib/server/database';
 import { redirect } from "@sveltejs/kit";
-import MarkdownIt from "markdown-it";
 import { marked } from "marked";
 
 export const load = (async ({ locals, params }) => {
