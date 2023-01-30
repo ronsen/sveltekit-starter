@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { enhance } from "$app/forms";
     import Alert from "$lib/components/alert.svelte";
     import type { ActionData } from "./$types";
 
@@ -14,7 +15,7 @@
 {/if}
 
 <div class="w-full md:w-2/3 md:mx-auto">
-    <form method="post">
+    <form method="post" use:enhance>
         <div class="mb-3">
             <input type="text" name="username" placeholder="Username" class="w-full p-2 border border-gray-300 rounded">
         </div>

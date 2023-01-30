@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { enhance } from "$app/forms";
     import Alert from "$lib/components/alert.svelte";
     import type { ActionData } from "./$types";
 
@@ -13,7 +14,7 @@
     <Alert>{@html form?.message}</Alert>
 {/if}
 
-<form method="POST">
+<form method="post" use:enhance>
     <div class="mb-3">
         <input type="text" name="title" placeholder="Title" class="w-full p-2 border border-gray-300 rounded">
     </div>

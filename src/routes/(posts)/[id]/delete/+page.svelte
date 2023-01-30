@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { enhance } from "$app/forms";
   import type { PageServerData } from "./$types";
 
   export let data: PageServerData;
@@ -13,7 +14,7 @@
     <div class="title font-bold">{data.post?.title}</div>
   </div>
 
-  <form method="post">
+  <form method="post" use:enhance>
       <button type="submit" class="bg-red-500 hover:bg-red-600 px-6 py-1 rounded text-white">Delete</button>
   </form>
 </article>

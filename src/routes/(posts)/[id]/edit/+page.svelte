@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { ActionData, PageServerData } from "./$types";
     import Alert from "$lib/components/alert.svelte";
+    import { enhance } from "$app/forms";
   
     export let data: PageServerData;
     export let form: ActionData;
@@ -14,7 +15,7 @@
     <Alert>{@html form?.message}</Alert>
 {/if}
 
-<form method="post">
+<form method="post" use:enhance>
     <input type="hidden" name="id" value="{data.post?.id}">
     <div class="mb-3">
         <input type="text" name="title" placeholder="Title" value="{data.post?.title}" class="w-full p-2 border border-gray-300 rounded">
