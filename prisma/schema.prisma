@@ -12,7 +12,7 @@ model User {
   username  String   @unique
   password  String
   token     String?  @unique
-  Post      Post[]
+  posts     Post[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
