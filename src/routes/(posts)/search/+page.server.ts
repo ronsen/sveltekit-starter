@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
-import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
+import { redirect } from "@sveltejs/kit";
+import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, url }) => {
     if (!locals.user) {
@@ -10,8 +10,7 @@ export const load = (async ({ locals, url }) => {
     const q = String(url.searchParams.get('q')).trim();
     const page = Number(url.searchParams.get('page') ?? '1');
 
-    const prisma = new PrismaClient();
-    const posts = await prisma.post.findMany({
+    const posts = await db.post.findMany({
         where: {
             OR: [
                 { title: { contains: q }},
