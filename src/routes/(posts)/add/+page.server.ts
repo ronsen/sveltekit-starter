@@ -5,10 +5,7 @@ import slugify from 'slugify';
 
 export const actions: Actions = {
     default: async ({ locals, request }) => {
-        const { title, content } = Object.fromEntries(await request.formData()) as {
-            title: string,
-            content: string
-        };
+        const { title, content } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
         if (title.length == 0) {
             return fail(400, {

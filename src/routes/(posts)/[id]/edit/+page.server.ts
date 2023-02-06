@@ -22,10 +22,7 @@ export const load = (async ({ locals, params }) => {
 
 export const actions: Actions = {
     default: async ({ request, params }) => {
-        const { title, content } = Object.fromEntries(await request.formData()) as {
-            title: string,
-            content: string
-        };
+        const { title, content } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
         if (title.length == 0) {
             return fail(400, {

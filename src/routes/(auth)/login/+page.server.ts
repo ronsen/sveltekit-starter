@@ -5,10 +5,7 @@ import bcrypt from 'bcrypt';
 
 export const actions: Actions = {
     default: async ({ cookies, request }) => {
-        const { username, password } = Object.fromEntries(await request.formData()) as {
-            username: string,
-            password: string
-        };
+        const { username, password } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
         if (!username || !password) {
             return fail(400, {
