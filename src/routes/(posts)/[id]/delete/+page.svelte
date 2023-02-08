@@ -15,7 +15,7 @@
   </div>
 
   <form method="post" use:enhance>
-      <button type="submit" class="bg-red-500 hover:bg-red-600 px-6 py-1 rounded text-white">Delete</button>
+      <button type="submit" class="btn btn-error">Delete</button>
   </form>
 </article>
   
