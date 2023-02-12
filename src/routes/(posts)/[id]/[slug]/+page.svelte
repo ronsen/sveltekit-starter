@@ -24,7 +24,9 @@
   {#if data.post?.tags}
     <div class="flex justify-center gap-3">
       {#each data.post?.tags as tag}
-        <div class="badge badge-ghost">{tag.name}</div>
+        <div class="badge badge-ghost">
+          <a href="/tag/{tag.slug}">{tag.name}</a>
+        </div>
       {/each}
     </div>
   {/if}

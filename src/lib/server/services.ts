@@ -24,9 +24,8 @@ export const getTagIds = async (tagcsv: string) => {
             return tag;
         });
 
-        let i = 0;
         for (const tag of tags) {
-            ids[i++] = { id: (await tag)?.id }
+            ids.push({ id: (await tag)?.id });
         }
     }
 
