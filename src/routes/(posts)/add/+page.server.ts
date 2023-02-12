@@ -2,6 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { db } from '$lib/server/database';
 import slugify from 'slugify';
+import { getTagIds } from "$lib/server/services";
 
 export const actions: Actions = {
     default: async ({ locals, request }) => {
@@ -14,33 +15,7 @@ export const actions: Actions = {
             });
         }
 
-        const ids = [];
-
-        if (tagcsv) {
-            const tagNames = tagcsv.split(',');
-
-            const tags = tagNames.map(async (tagName) => {
-                const name = tagName.trim().toLowerCase();
-                const slug = slugify(tagName);
-
-                let tag = await db.tag.findFirst({
-                    where: { slug: slug }
-                });
-
-                if (!tag) {
-                    tag = await db.tag.create({
-                        data: { name, slug }
-                    });
-                }
-
-                return tag;
-            });
-
-            let i = 0;
-            for (const tag of tags) {
-                ids[i++] = { id: (await tag)?.id }
-            }
-        }
+        const ids = await getTagIds(tagcsv);
         
         const post = await db.post.create({
             data: {
