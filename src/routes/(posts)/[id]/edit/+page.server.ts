@@ -18,18 +18,10 @@ export const load = (async ({ locals, params }) => {
         throw redirect(302, '/');
     }
 
-    const tagcsv = post.tags.map((tag, i) => {
-        if (i == 0) {
-            return tag.name;
-        }
-
-        return ' ' + tag.name;
-    })
-
     return {
         post: {
             ...post,
-            tagcsv
+            tagcsv: post.tags.map((tag, i) => i == 0 ? tag.name : ' ' + tag.name)
         }
     };
 }) satisfies PageServerLoad;

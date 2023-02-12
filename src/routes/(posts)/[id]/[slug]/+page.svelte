@@ -24,7 +24,7 @@
   {#if data.post?.tags}
     <div class="flex justify-center gap-3">
       {#each data.post?.tags as tag}
-        <div class="badge badge-secondary">{tag.name}</div>
+        <div class="badge badge-ghost">{tag.name}</div>
       {/each}
     </div>
   {/if}
