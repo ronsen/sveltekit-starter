@@ -24,6 +24,14 @@ model Post {
   content   String?
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
+  tags      Tag[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  slug  String @unique
+  posts Post[]
 }

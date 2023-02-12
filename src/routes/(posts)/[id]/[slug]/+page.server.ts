@@ -15,6 +15,7 @@ export const load = (async ({ locals, params }) => {
                 { id: Number(params.id) },
             ]
         },
+        include: { tags: true }
     });
 
     if (!post) {

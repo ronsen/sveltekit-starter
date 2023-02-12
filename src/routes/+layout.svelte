@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex justify-between items-center border-b border-gray-600 pb-2 mb-8">
-  <h1 class="font-bold uppercase text-lg"><a href="/">Catatan</a></h1>
+  <h1 class="font-bold uppercase"><a href="/">Catatan</a></h1>
   <div class="inline-flex gap-3">
     {#if $page.data.user}
       <a href="/add" title="Add New Note"><i class="bi bi-plus-circle"></i></a>

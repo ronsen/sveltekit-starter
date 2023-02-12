@@ -5,7 +5,7 @@ import slugify from 'slugify';
 
 export const actions: Actions = {
     default: async ({ locals, request }) => {
-        const { title, content } = Object.fromEntries(await request.formData()) as Record<string, string>;
+        const { title, content, tagcsv } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
         if (title.length == 0) {
             return fail(400, {
@@ -13,13 +13,14 @@ export const actions: Actions = {
                 message: '<strong>Title</strong> can not be blank.'
             });
         }
-
+        
         const post = await db.post.create({
             data: {
                 title: title.trim(),
                 slug: slugify(title.trim().toLowerCase()),
                 content: content.trim(),
-                authorId: locals.user.id }
+                authorId: locals.user.id
+            }
         });
 
         throw redirect(302, `/${post.id}/${post.slug}`);
