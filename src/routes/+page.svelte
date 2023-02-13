@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Navigation from "$lib/components/navigation.svelte";
-  import Posts from "$lib/components/posts.svelte";
-  import Search from "$lib/components/search.svelte";
-  import type { PageServerData } from "./$types";
+    import Navigation from "$lib/components/navigation.svelte";
+    import Posts from "$lib/components/posts.svelte";
+    import Search from "$lib/components/search.svelte";
+    import type { PageServerData } from "./$types";
 
-  export let data: PageServerData;
+    export let data: PageServerData;
 </script>
 
 <svelte:head>

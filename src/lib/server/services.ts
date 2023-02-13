@@ -9,7 +9,7 @@ export const getTagIds = async (tagcsv: string) => {
 
         const tags = tagNames.map(async (tagName) => {
             const name = tagName.trim().toLowerCase();
-            const slug = slugify(tagName);
+            const slug = slugify(name);
 
             let tag = await db.tag.findFirst({
                 where: { slug: slug }
@@ -25,7 +25,9 @@ export const getTagIds = async (tagcsv: string) => {
         });
 
         for (const tag of tags) {
-            ids.push({ id: (await tag)?.id });
+            ids.push({
+                id: (await tag)?.id
+            });
         }
     }
 
