@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { PageServerLoad } from './$types';
+    import type { PageServerData } from "./$types";
     import Navigation from "$lib/components/navigation.svelte";
     import Posts from "$lib/components/posts.svelte";
     
-    export let data: PageServerLoad;
+    export let data: PageServerData;
 </script>
 
 <svelte:head>
