@@ -1,7 +1,8 @@
 import type { PageServerLoad, Actions } from "./$types";
 import { fail, redirect } from '@sveltejs/kit';
-import { db } from '$lib/server/database';
+import { writeFileSync } from "fs";
 import slugify from 'slugify';
+import { db } from '$lib/server/database';
 import { getTagIds } from "$lib/server/services";
 
 export const load = (async ({ locals, params }) => {
@@ -29,7 +30,12 @@ export const load = (async ({ locals, params }) => {
 
 export const actions: Actions = {
     default: async ({ request, params }) => {
-        const { title, content, tagcsv } = Object.fromEntries(await request.formData()) as Record<string, string>;
+        const data = Object.fromEntries(await request.formData());
+
+        const title = data.title as string;
+        const content = data.content as string;
+        const tagcsv = data.tagcsv as string;
+        const file = data.file as File;
 
         if (title.length == 0) {
             return fail(400, {
@@ -38,12 +44,27 @@ export const actions: Actions = {
             });
         }
 
+        let filename = '';
+
+        if (file) {
+            const date = new Date().toISOString()
+                .replaceAll('-', '')
+                .replaceAll(':', '')
+                .replace(/T/, '')
+                .replace(/\..+/, '');
+
+            filename = date + '-' + slugify(file.name.toLowerCase());
+
+            writeFileSync(`static/${filename}`, Buffer.from(await file.arrayBuffer()));
+        }
+
         const ids = await getTagIds(tagcsv);
 
         const post = await db.post.update({
             where: { id: Number(params.id) },
             data: {
                 title: title.trim(),
+                photo: filename,
                 slug: slugify(title.toLowerCase()),
                 content: content.trim(),
                 tags: {
