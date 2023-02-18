@@ -55,7 +55,7 @@ export const actions: Actions = {
 
             filename = date + '-' + slugify(file.name.toLowerCase());
 
-            writeFileSync(`static/${filename}`, Buffer.from(await file.arrayBuffer()));
+            writeFileSync(`static/images/${filename}`, Buffer.from(await file.arrayBuffer()));
         }
 
         const ids = await getTagIds(tagcsv);

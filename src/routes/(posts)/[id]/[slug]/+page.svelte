@@ -19,7 +19,7 @@
 
     {#if data.post?.photo}
         <div class="mb-3">
-            <img src="/{data.post?.photo}" alt="{data.post?.title}">
+            <img src="/images/{data.post?.photo}" alt="{data.post?.title}">
         </div>       
     {/if}
 
