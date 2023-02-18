@@ -1,37 +1,38 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  password  String
-  token     String?  @unique
-  posts     Post[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+    id        Int      @id @default(autoincrement())
+    username  String   @unique
+    password  String
+    token     String?  @unique
+    posts     Post[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  slug      String
-  content   String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-  tags      Tag[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+    id        Int      @id @default(autoincrement())
+    photo     String?
+    title     String
+    slug      String
+    content   String?
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  Int
+    tags      Tag[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Tag {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  slug  String @unique
-  posts Post[]
+    id    Int    @id @default(autoincrement())
+    name  String @unique
+    slug  String @unique
+    posts Post[]
 }

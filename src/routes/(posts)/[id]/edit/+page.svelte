@@ -15,10 +15,13 @@
     <Alert>{@html form?.message}</Alert>
 {/if}
 
-<form method="post" use:enhance>
+<form method="post" enctype="multipart/form-data" use:enhance>
     <input type="hidden" name="id" value="{data.post?.id}">
     <div class="mb-3">
         <input type="text" name="title" placeholder="Title" value="{data.post?.title}" class="input input-bordered w-full">
+    </div>
+    <div class="mb-3">
+        <input type="file" name="file" accept="image/jpeg" class="file-input w-full">
     </div>
     <div class="mb-3">
         <textarea name="content" rows="10" placeholder="Content" class="textarea textarea-bordered w-full">{data.post?.content}</textarea>
