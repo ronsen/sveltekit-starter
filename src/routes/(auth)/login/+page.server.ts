@@ -14,7 +14,7 @@ export const actions: Actions = {
             });
         }
 
-        const user = await db.user.findUnique({
+        let user = await db.user.findUnique({
             where: { username: username.trim() }
         });
 
@@ -34,20 +34,20 @@ export const actions: Actions = {
             }
         }
 
-        const authenticatedUser = await db.user.update({
-            where: { username: user?.username },
-            data: { token: crypto.randomUUID() }
-        });
-
-        if (authenticatedUser) {
-            cookies.set('session', String(authenticatedUser.token), {
-                path: '/',
-                httpOnly: true,
-                sameSite: 'strict',
-                secure: process.env.NODE_ENV === 'production',
-                maxAge: 60 * 60 * 24 * 30
+        if (!user.token) {
+            user = await db.user.update({
+                where: { username: user?.username },
+                data: { token: crypto.randomUUID() }
             });
         }
+
+        cookies.set('session', String(user.token), {
+            path: '/',
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 60 * 60 * 24 * 30
+        });
 
         throw redirect(302, '/');
     }
