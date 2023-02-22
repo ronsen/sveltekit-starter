@@ -16,6 +16,7 @@ npx degit ronsen/sveltekit-starter
 
 Run these following commands to try locally:
 
+```bash
 cd sveltekit-starter
 npm install
 npm run dev
