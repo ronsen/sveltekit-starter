@@ -11,7 +11,7 @@ git clone git@github.com:ronsen/sveltekit-starter.git
 Or you can use `degit`:
 
 ```bash
-npx degit ronsen/sveltekit-starter
+npx degit ronsen/sveltekit-starter sveltekit-starter
 ```
 
 Run these following commands to try locally:
