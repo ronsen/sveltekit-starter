@@ -2,14 +2,26 @@
 
 A simple CRUD project using SvelteKit, Prisma, sqlite, Tailwind CSS, and TypeScript.
 
-Clone this project and run these following commands to try locally:
+Clone this project:
 
 ```bash
+git clone git@github.com:ronsen/sveltekit-starter.git
+```
+
+Or you can use `degit`:
+
+```bash
+npx degit ronsen/sveltekit-starter
+```
+
+Run these following commands to try locally:
+
+cd sveltekit-starter
 npm install
 npm run dev
 ```
 
-Migrate database:
+Migrate the database:
 
 ```bash
 npx prisma migrate dev --name init
