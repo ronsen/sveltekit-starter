@@ -1,5 +1,5 @@
 import { redirect } from "@sveltejs/kit";
-import type { PageServerLoad, Actions } from "./$types";
+import type { Actions } from "./$types";
 import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, params }) => {
@@ -17,7 +17,7 @@ export const load = (async ({ locals, params }) => {
     });
     
     return { post };
-}) satisfies PageServerLoad;
+});
 
 export const actions: Actions = {
     default: async ({ params }) => {

@@ -1,4 +1,4 @@
-import type { PageServerLoad, Actions } from "./$types";
+import type { Actions } from "./$types";
 import { fail, redirect } from '@sveltejs/kit';
 import { writeFileSync } from "fs";
 import slugify from 'slugify';
@@ -26,7 +26,7 @@ export const load = (async ({ locals, params }) => {
             tagcsv: post.tags.map((tag, i) => i == 0 ? tag.name : ' ' + tag.name)
         }
     };
-}) satisfies PageServerLoad;
+});
 
 export const actions: Actions = {
     default: async ({ request, params }) => {
