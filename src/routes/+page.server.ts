@@ -1,4 +1,3 @@
-// import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/database';
 import { redirect } from '@sveltejs/kit';
 

@@ -19,7 +19,6 @@
 		"@sveltejs/kit": "^1.0.0",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/bcrypt": "^5.0.0",
-		"@types/markdown-it": "^12.2.3",
 		"@types/marked": "^4.0.8",
 		"@types/node": "^18.11.18",
 		"autoprefixer": "^10.4.13",

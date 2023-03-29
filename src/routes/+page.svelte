@@ -2,7 +2,6 @@
     import Navigation from "$lib/components/navigation.svelte";
     import Posts from "$lib/components/posts.svelte";
     import Search from "$lib/components/search.svelte";
-    // import type { PageServerData } from "./$types";
 
     export let data;
 </script>
