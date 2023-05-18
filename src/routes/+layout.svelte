@@ -25,8 +25,8 @@
                 <label tabindex="0" class="btn btn-sm btn-ghost rounded-btn"><i class="bi bi-sun"></i></label>
                 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                 <ul tabindex="0" class="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-                    <li><button formaction="/?theme=light">Light</button></li> 
-                    <li><button formaction="/?theme=dark">Dark</button></li> 
+                    <li><button formaction="/?theme=light&redirectTo={$page.url.pathname}">Light</button></li> 
+                    <li><button formaction="/?theme=dark&redirectTo={$page.url.pathname}">Dark</button></li> 
                 </ul>
             </div>
         </form>

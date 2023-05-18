@@ -24,6 +24,7 @@ export const load = (async ({ locals, url }) => {
 export const actions: Actions = {
     default: async ({ url, cookies }) => {
         const theme = url.searchParams.get('theme');
+        const redirectTo = url.searchParams.get('redirectTo');
 
         if (theme) {
             cookies.set('theme', theme, {
@@ -31,5 +32,7 @@ export const actions: Actions = {
                 maxAge: 60 * 60 * 24 * 365
             });
         }
+
+        throw redirect(303, redirectTo ?? '/');
     }
 };
