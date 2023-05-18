@@ -2,10 +2,12 @@ import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import slugify from 'slugify';
 import bcrypt from 'bcrypt';
+import crypto from "crypto";
 
 const prisma = new PrismaClient();
 
 async function addUser() {
+    await prisma.post.deleteMany();
     await prisma.user.deleteMany();
 
     const user = await prisma.user.create({
