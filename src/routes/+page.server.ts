@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect, type Actions } from '@sveltejs/kit';
 import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, url }) => {
@@ -20,3 +20,16 @@ export const load = (async ({ locals, url }) => {
 
     return { posts, prevPage, nextPage };
 });
+
+export const actions: Actions = {
+    default: async ({ url, cookies }) => {
+        const theme = url.searchParams.get('theme');
+
+        if (theme) {
+            cookies.set('theme', theme, {
+                path: '/',
+                maxAge: 60 * 60 * 24 * 365
+            });
+        }
+    }
+};
