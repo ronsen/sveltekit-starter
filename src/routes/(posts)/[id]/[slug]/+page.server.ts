@@ -1,6 +1,8 @@
 import { db } from '$lib/server/database';
 import { redirect } from "@sveltejs/kit";
 import { marked } from "marked";
+import { mangle } from "marked-mangle";
+import { gfmHeadingId } from "marked-gfm-heading-id";
 
 export const load = (async ({ locals, params }) => {
     if (!locals.user) {
@@ -20,6 +22,13 @@ export const load = (async ({ locals, params }) => {
     if (!post) {
         throw redirect(302, '/');
     }
+
+    const options = {
+        prefix: "",
+    };
+
+    marked.use(mangle());
+    marked.use(gfmHeadingId(options));
 
     return {
         post: {

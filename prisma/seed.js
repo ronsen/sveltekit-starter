@@ -27,7 +27,7 @@ async function addPosts(user) {
     const posts = [];
 
     for (let i = 0; i < 20; i++) {
-        const words = faker.random.words(5).split(' ');
+        const words = faker.lorem.words(5).split(' ');
         const title = words.map((word) => {
             return word[0].toUpperCase() + word.substring(1);
         }).join(" ");

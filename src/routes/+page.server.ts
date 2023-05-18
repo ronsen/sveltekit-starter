@@ -1,5 +1,5 @@
-import { db } from '$lib/server/database';
 import { redirect } from '@sveltejs/kit';
+import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, url }) => {
     if (!locals.user) {
@@ -12,7 +12,7 @@ export const load = (async ({ locals, url }) => {
         where: { author: { id: locals.user.id } },
         take: 10,
         skip: page == 1 ? 0 : (page - 1) * 10,
-        orderBy: [{ id: 'desc'}]
+        orderBy: [{ id: 'desc' }]
     });
 
     const prevPage = page == 1 ? 0 : page - 1;
