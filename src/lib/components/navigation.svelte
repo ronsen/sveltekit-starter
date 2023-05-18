@@ -1,7 +1,7 @@
 <script lang="ts">
-    export let prevPage: Number;
-    export let nextPage: Number;
-    export let href: String;
+    export let prevPage: number;
+    export let nextPage: number;
+    export let href: string;
 </script>
 
 <div class="flex justify-center gap-3">

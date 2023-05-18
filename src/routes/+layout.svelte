@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { enhance } from "$app/forms";
+  import { enhance, type SubmitFunction } from "$app/forms";
   import { page } from "$app/stores";
-  import type { SubmitFunction } from "./$types";
   
   import "../app.css";
 
