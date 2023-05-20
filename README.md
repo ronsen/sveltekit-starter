@@ -1,6 +1,6 @@
 # sveltekit-starter
 
-A simple CRUD project using SvelteKit, Prisma, sqlite, Tailwind CSS, and TypeScript.
+A simple CRUD project using SvelteKit, Prisma, sqlite, Tailwind CSS, and TypeScript with many-to-many relationship example.
 
 Clone this project:
 
