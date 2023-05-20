@@ -34,6 +34,8 @@ Database seeding:
 npx prisma db seed
 ```
 
+Create `/static/images` directory.
+
 ## Docker
 
 Run these following commands to create a Docker container:

@@ -4,6 +4,7 @@ import { writeFileSync } from "fs";
 import slugify from 'slugify';
 import { db } from '$lib/server/database';
 import { getTagIds } from "$lib/server/services";
+import type { Tag } from "@prisma/client";
 
 export const load = (async ({ locals, params }) => {
     const post = await db.post.findFirst({
@@ -23,7 +24,7 @@ export const load = (async ({ locals, params }) => {
     return {
         post: {
             ...post,
-            tagcsv: post.tags.map((tag, i) => i == 0 ? tag.name : ' ' + tag.name)
+            tagcsv: post.tags.map((tag: Tag, i: number) => i == 0 ? tag.name : ' ' + tag.name)
         }
     };
 });
@@ -44,9 +45,15 @@ export const actions: Actions = {
             });
         }
 
-        let filename = '';
+        const post = await db.post.findUnique({
+            where: {
+                id: Number(params.id)
+            }
+        });
 
-        if (file) {
+        let filename = post.filename;
+
+        if (file.size > 0) {
             const date = new Date().toISOString()
                 .replaceAll('-', '')
                 .replaceAll(':', '')
@@ -60,7 +67,7 @@ export const actions: Actions = {
 
         const ids = await getTagIds(tagcsv);
 
-        const post = await db.post.update({
+        await db.post.update({
             where: { id: Number(params.id) },
             data: {
                 title: title.trim(),

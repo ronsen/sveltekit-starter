@@ -16,7 +16,7 @@
     </div>
 
     {#if data.post?.photo}
-        <div class="mb-3">
+        <div class="flex justify-center mb-3">
             <img src="/images/{data.post?.photo}" alt="{data.post?.title}">
         </div>       
     {/if}

@@ -23,7 +23,7 @@ export const actions: Actions = {
 
         let filename = '';
         
-        if (file) {
+        if (file.size > 0) {
             const date = new Date().toISOString()
                 .replaceAll('-', '')
                 .replaceAll(':', '')
