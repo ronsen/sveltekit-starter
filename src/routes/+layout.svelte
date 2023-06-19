@@ -1,16 +1,17 @@
 <script lang="ts">
-  import { enhance, type SubmitFunction } from "$app/forms";
-  import { page } from "$app/stores";
-  
-  import "../app.css";
+    import { enhance } from "$app/forms";
+    import type { SubmitFunction } from "./$types";
+    import { page } from "$app/stores";
 
-  const updateTheme: SubmitFunction = ({ action }) => {
-    const theme = action.searchParams.get('theme');
+    import "../app.css";
 
-    if (theme) {
-        document.documentElement.setAttribute('data-theme', theme);
+    const updateTheme: SubmitFunction = ({ action }) => {
+        const theme = action.searchParams.get('theme');
+
+        if (theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+        }
     }
-  }
 </script>
 
 <div class="flex justify-between items-center border-b border-primary pb-2 mb-8">
