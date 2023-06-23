@@ -1,5 +1,5 @@
-import type { Actions } from "./$types";
 import { fail, redirect } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from "./$types";
 import { writeFileSync } from "fs";
 import slugify from 'slugify';
 import { db } from '$lib/server/database';
@@ -27,9 +27,9 @@ export const load = (async ({ locals, params }) => {
             tagcsv: post.tags.map((tag: Tag, i: number) => i == 0 ? tag.name : ' ' + tag.name)
         }
     };
-});
+}) satisfies PageServerLoad;
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ request, params }) => {
         const data = Object.fromEntries(await request.formData());
 
@@ -51,7 +51,8 @@ export const actions: Actions = {
             }
         });
 
-        let filename = post.filename;
+
+        let filename = post?.photo;
 
         if (file.size > 0) {
             const date = new Date().toISOString()
@@ -64,6 +65,7 @@ export const actions: Actions = {
 
             writeFileSync(`static/images/${filename}`, Buffer.from(await file.arrayBuffer()));
         }
+
 
         const ids = await getTagIds(tagcsv);
 
@@ -80,6 +82,6 @@ export const actions: Actions = {
             }
         });
 
-        throw redirect(302, `/${post.id}/${post.slug}`);
+        throw redirect(302, `/${post?.id}/${post?.slug}`);
     }
-};
+} satisfies Actions;

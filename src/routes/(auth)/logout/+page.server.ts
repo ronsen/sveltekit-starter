@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ cookies }) => {
         cookies.set('session', '', {
             path: '/',
@@ -10,4 +10,4 @@ export const actions: Actions = {
 
         throw redirect(302, '/');
     }
-};
+} satisfies Actions;

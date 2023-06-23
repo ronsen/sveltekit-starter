@@ -4,7 +4,7 @@ import { db } from '$lib/server/database';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ request }) => {
         const { username, password } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
@@ -36,4 +36,4 @@ export const actions: Actions = {
 
         throw redirect(303, '/login');
     }
-};
+} satisfies Actions;

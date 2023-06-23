@@ -5,7 +5,7 @@ import { writeFileSync } from "fs";
 import { db } from '$lib/server/database';
 import { getTagIds } from "$lib/server/services";
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ locals, request }) => {
         const data = Object.fromEntries(await request.formData());
 
@@ -52,4 +52,4 @@ export const actions: Actions = {
 
         throw redirect(302, `/${post.id}/${post.slug}`);
     }
-};
+} satisfies Actions;

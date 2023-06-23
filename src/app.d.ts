@@ -17,7 +17,7 @@ declare global {
 		// interface Platform {}
 	}
 
-	let db: PrismaClient;
+	var db: PrismaClient;
 }
 
 export {};

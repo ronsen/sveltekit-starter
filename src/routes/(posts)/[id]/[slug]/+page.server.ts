@@ -1,3 +1,4 @@
+import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/database';
 import { redirect } from "@sveltejs/kit";
 import { marked } from "marked";
@@ -32,4 +33,4 @@ export const load = (async ({ locals, params }) => {
             contentToHtml: marked.parse((post?.content as string).replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,""))
         }
     };
-});
+}) satisfies PageServerLoad;

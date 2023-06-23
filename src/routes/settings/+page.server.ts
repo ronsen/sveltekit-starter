@@ -3,7 +3,7 @@ import type { Actions } from './$types';
 import { db } from '$lib/server/database';
 import bcrypt from 'bcrypt';
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ locals, request }) => {
         const { password } = Object.fromEntries(await request.formData()) as {
             password: string
@@ -27,4 +27,4 @@ export const actions: Actions = {
 
         throw redirect(302, '/');
     }
-};
+} satisfies Actions;
