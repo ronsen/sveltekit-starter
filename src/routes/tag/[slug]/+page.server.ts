@@ -1,3 +1,4 @@
+import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/database';
 
@@ -29,4 +30,4 @@ export const load = (async ({ locals, params, url }) => {
     const nextPage = posts.length < 10 ? 0 : page + 1;
 
     return { tag, posts, prevPage, nextPage };
-});
+}) satisfies PageServerLoad;

@@ -1,7 +1,7 @@
 import type { Handle } from "@sveltejs/kit";
 import { db } from "$lib/server/database";
 
-export const handle: Handle = async ({ event, resolve }) => {
+export const handle = (async ({ event, resolve }) => {
     let theme: string | null = null;
     
     const newTheme = event.url.searchParams.get('theme');
@@ -46,4 +46,4 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
 
     return await resolve(event);
-};
+}) satisfies Handle;

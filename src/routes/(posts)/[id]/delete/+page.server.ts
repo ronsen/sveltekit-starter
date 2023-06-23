@@ -1,5 +1,5 @@
+import type { Actions, PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
-import type { Actions } from "./$types";
 import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, params }) => {
@@ -17,9 +17,9 @@ export const load = (async ({ locals, params }) => {
     });
     
     return { post };
-});
+}) satisfies PageServerLoad;
 
-export const actions: Actions = {
+export const actions = {
     default: async ({ params }) => {
         await db.post.delete({
             where: {
@@ -29,4 +29,4 @@ export const actions: Actions = {
 
         throw redirect(302, '/');
     }
-};
+} satisfies Actions;
