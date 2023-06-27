@@ -9,7 +9,7 @@
 {:else}
     <div class="notes mb-6">
         {#each posts as post}
-            <div class="note flex justify-between items-baseline border-b border-neutral pb-2 mb-2">
+            <div class="note flex justify-between items-baseline border-b border-base-300 pb-2 mb-2">
                 <div class="note-title">
                     <a href="/{post.id}/{post.slug}">{post.title}</a>
                 </div>
