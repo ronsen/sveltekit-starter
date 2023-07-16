@@ -11,7 +11,6 @@
     const destroy = (post: Post) => {
         action = '/' + post.id + '/delete';
         dialog.show();
-        
     };
 </script>
 
