@@ -1,7 +1,11 @@
 <script lang="ts">
     import type { PageServerData } from "./$types";
+    import { enhance } from "$app/forms";
 
     export let data: PageServerData;
+
+    let dialog: any;
+
 </script>
 
 <svelte:head>
@@ -13,7 +17,7 @@
         <div class="title font-bold">{data.post?.title}</div>
         <div class="inline-flex gap-3">
             <a href="/{data.post?.id}/edit" title="Edit Note" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
-            <a href="/{data.post?.id}/delete" title="Delete Note" class="text-gray-500"><i class="bi bi-trash"></i></a>
+            <button title="Delete Note" class="text-gray-500" on:click={() => dialog.show()}><i class="bi bi-trash"></i></button>
         </div>
     </div>
 
@@ -37,3 +41,14 @@
         </div>
     {/if}
 </article>
+
+<dialog bind:this={dialog} class="modal">
+    <form action="/{data.post?.id}/delete" method="post" class="modal-box" use:enhance>
+        <h3 class="font-bold text-lg">Confirm</h3>
+        <p class="py-4">Delete this note?</p>
+        <div class="modal-action">
+            <button type="submit" class="btn btn-error btn-sm">Yes</button>
+            <button class="btn btn-neutral btn-sm" on:click|preventDefault={() => dialog.close()}>No</button>
+        </div>
+    </form>
+</dialog>
