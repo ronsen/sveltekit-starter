@@ -45,3 +45,5 @@ docker build --tag catatan:1.0 .
 docker container create --name catatan -p 3000:3000 catatan:1.0
 docker container start catatan
 ```
+
+Login with sample user `admin` and password `password`.
