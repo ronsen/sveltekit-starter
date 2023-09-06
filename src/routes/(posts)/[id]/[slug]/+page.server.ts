@@ -22,11 +22,6 @@ export const load = (async ({ locals, params }) => {
         throw redirect(302, '/');
     }
 
-    marked.use({
-        mangle: false,
-        headerIds: false
-    })
-
     return {
         post: {
             ...post,
