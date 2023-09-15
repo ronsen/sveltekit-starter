@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { Post, PrismaClient, User } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import slugify from 'slugify';
 import bcrypt from 'bcrypt';
@@ -7,26 +7,29 @@ import crypto from "crypto";
 const prisma = new PrismaClient();
 
 async function addUser() {
-    await prisma.post.deleteMany();
-    await prisma.user.deleteMany();
-
-    const user = await prisma.user.create({
-        data: {
-            username: 'admin',
-            password: await bcrypt.hash('password', 10),
-            token: crypto.randomUUID()
+    let user = await prisma.user.findUnique({
+        where: {
+            username: 'admin'
         }
     });
+
+    if (!user) {
+        user = await prisma.user.create({
+            data: {
+                username: 'admin',
+                password: await bcrypt.hash('password', 10),
+                token: crypto.randomUUID()
+            }
+        });
+    }
 
     return user;
 }
 
-async function addPosts(user) {
-    await prisma.post.deleteMany();
-
+async function addPosts(user: User) {
     const tags = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
-    const posts = [];
+    const posts: Post[] = [];
 
     for (let i = 0; i < 20; i++) {
         const words = faker.lorem.words(5).split(' ');
