@@ -14,7 +14,7 @@
     }
 </script>
 
-<div class="container px-8 md:w-3/4 mx-auto my-8">
+<main class="container px-8 mx-auto my-8">
     <div class="flex justify-between items-center border-b border-primary pb-2 mb-8">
         <h1 class="font-bold uppercase"><a href="/">Catatan</a></h1>
 
@@ -48,4 +48,4 @@
     </div>
 
     <slot />
-</div>
+</main>
