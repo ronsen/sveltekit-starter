@@ -3,9 +3,9 @@
     import { enhance } from "$app/forms";
     import type { Post } from "@prisma/client";
 
-    export let posts: any;
+    export let posts: Post[];
 
-    let dialog: any;
+    let dialog: HTMLDialogElement;
     let action: string = '';
 
     const destroy = (post: Post) => {

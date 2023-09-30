@@ -4,8 +4,7 @@
 
     export let data: PageServerData;
 
-    let dialog: any;
-
+    let dialog: HTMLDialogElement;
 </script>
 
 <svelte:head>
