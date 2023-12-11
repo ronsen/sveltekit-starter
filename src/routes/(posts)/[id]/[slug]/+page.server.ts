@@ -25,7 +25,7 @@ export const load = (async ({ locals, params }) => {
     return {
         post: {
             ...post,
-            contentToHtml: marked.parse((post?.content as string).replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,""))
+            contentToHtml: marked.parse((post?.content as string))
         }
     };
 }) satisfies PageServerLoad;
