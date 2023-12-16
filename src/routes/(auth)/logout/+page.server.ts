@@ -8,6 +8,6 @@ export const actions = {
             expires: new Date(0)
         });
 
-        throw redirect(302, '/');
+        redirect(302, '/');
     }
 } satisfies Actions;

@@ -18,7 +18,7 @@ export const load = (async ({ locals, params }) => {
     });
 
     if (!post) {
-        throw redirect(302, '/');
+        redirect(302, '/');
     }
 
     return {
@@ -82,6 +82,6 @@ export const actions = {
             }
         });
 
-        throw redirect(302, `/${post?.id}/${post?.slug}`);
+        redirect(302, `/${post?.id}/${post?.slug}`);
     }
 } satisfies Actions;

@@ -34,6 +34,6 @@ export const actions = {
             }
         })
 
-        throw redirect(303, '/login');
+        redirect(303, '/login');
     }
 } satisfies Actions;

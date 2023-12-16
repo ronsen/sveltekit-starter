@@ -4,7 +4,7 @@ import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, url }) => {
     if (!locals.user) {
-        throw redirect(302, '/login');
+        redirect(302, '/login');
     }
 
     const q = String(url.searchParams.get('q')).trim();

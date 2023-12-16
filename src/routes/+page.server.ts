@@ -4,7 +4,7 @@ import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, url }) => {
     if (!locals.user) {
-        throw redirect(302, '/login');
+        redirect(302, '/login');
     }
 
     const page = Number(url.searchParams.get('page') ?? '1');
@@ -34,6 +34,6 @@ export const actions = {
             });
         }
 
-        throw redirect(303, redirectTo ?? '/');
+        redirect(303, redirectTo ?? '/');
     }
 } satisfies Actions;

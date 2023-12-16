@@ -5,7 +5,7 @@ import { marked } from "marked";
 
 export const load = (async ({ locals, params }) => {
     if (!locals.user) {
-        throw redirect(302, '/login');
+        redirect(302, '/login');
     }
 
     const post = await db.post.findFirst({
@@ -19,7 +19,7 @@ export const load = (async ({ locals, params }) => {
     });
 
     if (!post) {
-        throw redirect(302, '/');
+        redirect(302, '/');
     }
 
     return {

@@ -25,6 +25,6 @@ export const actions = {
             }
         })
 
-        throw redirect(302, '/');
+        redirect(302, '/');
     }
 } satisfies Actions;

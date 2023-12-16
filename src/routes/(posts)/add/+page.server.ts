@@ -50,6 +50,6 @@ export const actions = {
             }
         });
 
-        throw redirect(302, `/${post.id}/${post.slug}`);
+        redirect(302, `/${post.id}/${post.slug}`);
     }
 } satisfies Actions;
