@@ -2,7 +2,7 @@ import { redirect, type Handle } from "@sveltejs/kit";
 import { db } from "$lib/server/database";
 
 export const handle = (async ({ event, resolve }) => {
-	let theme: string | null = null;
+	let theme: string = 'light';
 
 	const session = event.cookies.get('session');
 	const newTheme = event.url.searchParams.get('theme');
