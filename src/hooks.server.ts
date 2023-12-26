@@ -4,6 +4,7 @@ import { db } from "$lib/server/database";
 export const handle = (async ({ event, resolve }) => {
 	let theme: string | null = null;
 
+	const session = event.cookies.get('session');
 	const newTheme = event.url.searchParams.get('theme');
 	const cookieTheme = event.cookies.get('theme');
 	const path = event.url.pathname;
@@ -14,8 +15,6 @@ export const handle = (async ({ event, resolve }) => {
 		theme = cookieTheme;
 	}
 
-	const session = event.cookies.get('session');
-
 	if (!session) {
 		if (
 			path == '/' ||
@@ -23,14 +22,10 @@ export const handle = (async ({ event, resolve }) => {
 			path.startsWith('/tag')
 		) redirect(303, '/login');
 
-		if (theme) {
-			return await resolve(event, {
-				transformPageChunk: ({ html }) =>
-					html.replace('data-theme=""', `data-theme="${theme}"`)
-			});
-		}
-
-		return await resolve(event);
+		return await resolve(event, {
+			transformPageChunk: ({ html }) =>
+				html.replace('data-theme=""', `data-theme="${theme}"`)
+		});
 	}
 
 	const user = await db.user.findUnique({
@@ -45,12 +40,8 @@ export const handle = (async ({ event, resolve }) => {
 		}
 	}
 
-	if (theme) {
-		return await resolve(event, {
-			transformPageChunk: ({ html }) =>
-				html.replace('data-theme=""', `data-theme="${theme}"`)
-		});
-	}
-
-	return await resolve(event);
+	return await resolve(event, {
+		transformPageChunk: ({ html }) =>
+			html.replace('data-theme=""', `data-theme="${theme}"`)
+	});
 }) satisfies Handle;
