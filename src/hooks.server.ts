@@ -19,6 +19,7 @@ export const handle = (async ({ event, resolve }) => {
 		if (
 			path == '/' ||
 			/^\/\d/.test(path) ||
+			path.startsWith('/search') ||
 			path.startsWith('/tag')
 		) redirect(303, '/login');
 
