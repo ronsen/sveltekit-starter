@@ -1,12 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, params, url }) => {
-    if (!locals.user) {
-        redirect(302, '/login');
-    }
-
     const page = Number(url.searchParams.get('page') ?? '1');
 
     const tag = await db.tag.findFirst({

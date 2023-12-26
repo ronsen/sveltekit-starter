@@ -4,10 +4,6 @@ import { redirect } from "@sveltejs/kit";
 import { marked } from "marked";
 
 export const load = (async ({ locals, params }) => {
-    if (!locals.user) {
-        redirect(302, '/login');
-    }
-
     const post = await db.post.findFirst({
         where: {
             AND: [
