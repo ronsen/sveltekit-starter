@@ -15,30 +15,25 @@ export const handle = (async ({ event, resolve }) => {
 		theme = cookieTheme;
 	}
 
-	if (!session) {
+	if (session) {
+		const user = await db.user.findUnique({
+			where: { token: session },
+			select: { id: true, username: true }
+		});
+
+		if (user) {
+			event.locals.user = {
+				id: user.id,
+				name: user.username
+			}
+		}
+	} else {
 		if (
 			path == '/' ||
 			/^\/\d/.test(path) ||
 			path.startsWith('/search') ||
 			path.startsWith('/tag')
 		) redirect(303, '/login');
-
-		return await resolve(event, {
-			transformPageChunk: ({ html }) =>
-				html.replace('data-theme=""', `data-theme="${theme}"`)
-		});
-	}
-
-	const user = await db.user.findUnique({
-		where: { token: session },
-		select: { id: true, username: true }
-	});
-
-	if (user) {
-		event.locals.user = {
-			id: user.id,
-			name: user.username
-		}
 	}
 
 	return await resolve(event, {
