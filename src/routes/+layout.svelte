@@ -1,6 +1,6 @@
 <script lang="ts">
+	import type { SubmitFunction } from "./$types";
     import { enhance } from "$app/forms";
-    import type { SubmitFunction } from "./$types";
     import { page } from "$app/stores";
 
     import "../app.css";
@@ -40,7 +40,7 @@
             {#if !$page.data.user}
                 <a href="/login" title="Sign In"><i class="bi bi-box-arrow-in-right"></i></a>
             {:else}
-                <form method="POST" action="/logout">
+                <form method="POST" action="/logout" use:enhance>
                     <button type="submit" title="Sign Out"><i class="bi bi-box-arrow-right"></i></button>
                 </form>
             {/if}
