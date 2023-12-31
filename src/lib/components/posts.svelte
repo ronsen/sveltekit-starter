@@ -1,17 +1,9 @@
 <script lang="ts">
     import Alert from "$lib/components/alert.svelte";
-    import { enhance } from "$app/forms";
     import type { Post } from "@prisma/client";
+    import Delete from "./delete.svelte";
 
     export let posts: Post[];
-
-    let dialog: HTMLDialogElement;
-    let action: string = '';
-
-    const destroy = (post: Post) => {
-        action = '/' + post.id + '/delete';
-        dialog.show();
-    };
 </script>
 
 {#if (posts.length == 0)}
@@ -25,20 +17,9 @@
                 </div>
                 <div class="inline-flex gap-3">
                     <a href="/{post.id}/edit" title="Edit Note" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
-                    <button title="Delete Note" class="text-gray-500" on:click={() => destroy(post)}><i class="bi bi-trash"></i></button>
+                    <Delete message='Delete this note: {post.title}?' action='/{post.id}/delete' />
                 </div>
             </div>
         {/each}
     </div>
 {/if}
-
-<dialog bind:this={dialog} class="modal">
-    <form {action} method="post" class="modal-box" on:submit|preventDefault={() => dialog.close()} use:enhance>
-        <h3 class="font-bold text-lg">Confirm</h3>
-        <p class="py-4">Delete this note?</p>
-        <div class="modal-action">
-            <button type="submit" class="btn btn-error btn-sm">Yes</button>
-            <button class="btn btn-neutral btn-sm" on:click|preventDefault={() => dialog.close()}>No</button>
-        </div>
-    </form>
-</dialog>
