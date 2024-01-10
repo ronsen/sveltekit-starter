@@ -14,7 +14,7 @@
     }
 </script>
 
-<main class="container md:w-3/5 px-8 mx-auto my-8">
+<main class="container md:w-[800px] px-8 mx-auto my-8">
     <div class="flex justify-between items-center border-b border-primary pb-2 mb-8">
         <h1 class="font-bold uppercase"><a href="/">Catatan</a></h1>
 

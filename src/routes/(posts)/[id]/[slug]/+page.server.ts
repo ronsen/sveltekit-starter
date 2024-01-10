@@ -21,7 +21,7 @@ export const load = (async ({ locals, params }) => {
     return {
         post: {
             ...post,
-            contentToHtml: marked.parse(post?.content as string)
+            contentToHtml: await marked.parse(post.content!)
         }
     };
 }) satisfies PageServerLoad;
