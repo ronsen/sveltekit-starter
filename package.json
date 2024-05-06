@@ -16,7 +16,7 @@
 	"devDependencies": {
 		"@faker-js/faker": "^8.0.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/adapter-node": "^4.0.1",
+		"@sveltejs/adapter-node": "^5.0.1",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tailwindcss/typography": "^0.5.9",
@@ -26,7 +26,7 @@
 		"autoprefixer": "^10.4.13",
 		"bcrypt": "^5.1.0",
 		"daisyui": "^4.4.18",
-		"marked": "^11.0.0",
+		"marked": "^12.0.2",
 		"postcss": "^8.4.20",
 		"prisma": "^5.0.0",
 		"slugify": "^1.6.5",
