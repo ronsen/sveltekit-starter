@@ -3,6 +3,9 @@
     import type { Post } from "@prisma/client";
     import Delete from "./delete.svelte";
 
+	import Fa from "svelte-fa";
+    import { faPencil } from "@fortawesome/free-solid-svg-icons";
+
     export let posts: Post[];
 </script>
 
@@ -16,7 +19,7 @@
                     <a href="/{post.id}/{post.slug}">{post.title}</a>
                 </div>
                 <div class="inline-flex gap-3">
-                    <a href="/{post.id}/edit" title="Edit Note" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
+                    <a href="/{post.id}/edit" title="Edit Note" class="text-warning"><Fa icon={faPencil} /></a>
                     <Delete message='Delete this note: {post.title}?' action='/{post.id}/delete' />
                 </div>
             </div>

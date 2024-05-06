@@ -5,6 +5,15 @@
 
     import "../app.css";
 
+	import Fa from "svelte-fa";
+	import {
+		faSun, 
+		faSignIn, 
+		faSignOut,
+		faGears,
+        faPlusCircle,
+	} from "@fortawesome/free-solid-svg-icons";
+
     const updateTheme: SubmitFunction = ({ action }) => {
         const theme = action.searchParams.get('theme');
 
@@ -23,7 +32,7 @@
                 <div class="dropdown dropdown-end">
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <!-- svelte-ignore a11y-label-has-associated-control -->
-                    <label tabindex="0" class="btn btn-sm btn-ghost rounded-btn"><i class="bi bi-sun"></i></label>
+                    <label tabindex="0" class="btn btn-sm btn-ghost rounded-btn"><Fa icon={faSun} /></label>
                     <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
                     <ul tabindex="0" class="menu dropdown-content p-2 shadow bg-base-200 rounded-box w-52 mt-4">
                         <li><button formaction="/?theme=light&redirectTo={$page.url.pathname}">Light</button></li> 
@@ -33,15 +42,15 @@
             </form>
             
             {#if $page.data.user}
-                <a href="/add" title="Add New Note"><i class="bi bi-plus-circle"></i></a>
-                <a href="/settings" title="Settings"><i class="bi bi-gear"></i></a>
+                <a href="/add" title="Add New Note"><Fa icon={faPlusCircle} /></a>
+                <a href="/settings" title="Settings"><Fa icon={faGears} /></a>
             {/if}
 
             {#if !$page.data.user}
-                <a href="/login" title="Sign In"><i class="bi bi-box-arrow-in-right"></i></a>
+				<a href="/login" title="Sign In"><Fa icon={faSignIn} /></a>
             {:else}
                 <form method="POST" action="/logout" use:enhance>
-                    <button type="submit" title="Sign Out"><i class="bi bi-box-arrow-right"></i></button>
+                    <button type="submit" title="Sign Out"><Fa icon={faSignOut} /></button>
                 </form>
             {/if}
         </div>
