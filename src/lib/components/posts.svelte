@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Alert from "$lib/components/alert.svelte";
 	import type { Post } from "@prisma/client";
+	import Alert from "$lib/components/alert.svelte";
 	import Delete from "./delete.svelte";
 
 	import Fa from "svelte-fa";

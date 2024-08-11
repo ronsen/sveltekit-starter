@@ -1,4 +1,4 @@
-import { Post, PrismaClient, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import slugify from 'slugify';
 import bcrypt from 'bcrypt';
@@ -26,10 +26,10 @@ async function addUser() {
     return user;
 }
 
-async function addPosts(user: User) {
+async function addPosts(user) {
     const tags = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
-    const posts: Post[] = [];
+    const posts = [];
 
     for (let i = 0; i < 20; i++) {
         const words = faker.lorem.words(5).split(' ');

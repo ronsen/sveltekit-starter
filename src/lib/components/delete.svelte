@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
-	import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 	import Fa from "svelte-fa";
+	import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 	let dialog: HTMLDialogElement;
 	export let action: string;
