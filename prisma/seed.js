@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import slugify from 'slugify';
-import bcrypt from 'bcrypt';
 import crypto from "crypto";
 
 const prisma = new PrismaClient();
@@ -17,7 +16,7 @@ async function addUser() {
         user = await prisma.user.create({
             data: {
                 username: 'admin',
-                password: await bcrypt.hash('password', 10),
+                password: 'password',
                 token: crypto.randomUUID()
             }
         });

@@ -1,7 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { db } from '$lib/server/database';
-import bcrypt from 'bcrypt';
 
 export const actions = {
 	default: async ({ cookies, request }) => {
@@ -24,9 +23,7 @@ export const actions = {
 				message: 'User not exists.'
 			});
 		} else {
-			const validPassword = await bcrypt.compare(password, user.password);
-
-			if (!validPassword) {
+			if (user.password != password) {
 				return fail(400, {
 					error: true,
 					message: 'You have entered invalid credentials.'

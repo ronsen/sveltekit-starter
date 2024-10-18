@@ -1,7 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { db } from '$lib/server/database';
-import bcrypt from 'bcrypt';
 
 export const actions = {
 	default: async ({ locals, request }) => {
@@ -21,7 +20,7 @@ export const actions = {
 				id: locals.user.id
 			},
 			data: {
-				password: await bcrypt.hash(password, 10),
+				password,
 			}
 		})
 

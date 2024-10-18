@@ -42,3 +42,7 @@ Sign in with a sample user:
 Username: admin
 Password: password
 ```
+
+#### Warning
+
+Passwords are stored in plain text.
