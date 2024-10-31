@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { db } from '$lib/server/database';
+import crypto from 'crypto';
 
 export const actions = {
 	default: async ({ cookies, request }) => {
@@ -23,7 +24,7 @@ export const actions = {
 				message: 'User not exists.'
 			});
 		} else {
-			if (user.password != password) {
+			if (user.password != crypto.createHash('sha256').update(password).digest('hex')) {
 				return fail(400, {
 					error: true,
 					message: 'You have entered invalid credentials.'

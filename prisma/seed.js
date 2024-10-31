@@ -16,7 +16,7 @@ async function addUser() {
         user = await prisma.user.create({
             data: {
                 username: 'admin',
-                password: 'password',
+                password: crypto.createHash('sha256').update('password').digest('hex'),
                 token: crypto.randomUUID()
             }
         });
