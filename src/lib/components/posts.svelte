@@ -14,13 +14,13 @@
 {:else}
 	<div class="notes mb-6">
 		{#each posts as post}
-			<div class="note flex justify-between items-baseline border-b border-base-300 pb-2 mb-2">
+			<div class="note flex justify-between items-baseline border-b pb-2 mb-2">
 				<div class="note-title">
 					<a href="/{post.id}/{post.slug}">{post.title}</a>
 				</div>
 				<div class="inline-flex gap-3">
-					<a href="/{post.id}/edit" title="Edit Note" class="text-warning"><Fa icon={faPencil} /></a>
-					<Delete message="Delete this note: {post.title}?" action="/{post.id}/delete" />
+					<a href="/{post.id}/edit" title="Edit"><Fa icon={faPencil} /></a>
+					<Delete message="Delete: {post.title}?" action="/{post.id}/delete" />
 				</div>
 			</div>
 		{/each}

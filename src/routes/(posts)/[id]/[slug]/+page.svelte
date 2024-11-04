@@ -2,6 +2,9 @@
 	import type { PageServerData } from "./$types";
 	import Delete from "$lib/components/delete.svelte";
 
+	import Fa from "svelte-fa";
+	import { faPencil } from "@fortawesome/free-solid-svg-icons";
+
 	export let data: PageServerData;
 </script>
 
@@ -10,11 +13,11 @@
 </svelte:head>
 
 <article>
-	<div class="flex justify-between items-center border-b border-base-300 pb-3 mb-3">
+	<div class="flex justify-between items-center border-b pb-3 mb-3">
 		<div class="title font-bold">{data.post?.title}</div>
 		<div class="inline-flex gap-3">
-			<a href="/{data.post?.id}/edit" title="Edit Note" class="text-gray-500"><i class="bi bi-pencil-square"></i></a>
-			<Delete message="Delete this note?" action="/{data.post?.id}/delete" />
+			<a href="/{data.post?.id}/edit" title="Edit"><Fa icon={faPencil} /></a>
+			<Delete message="Delete this post?" action="/{data.post?.id}/delete" />
 		</div>
 	</div>
 
@@ -29,9 +32,9 @@
 	</div>
 
 	{#if data.post?.tags}
-		<div class="flex justify-center gap-3">
+		<div class="flex justify-center gap-2">
 			{#each data.post?.tags as tag}
-				<div class="badge badge-ghost">
+				<div class="bg-zinc-100 rounded px-2 py-1 text-sm">
 					<a href="/tag/{tag.slug}">{tag.name}</a>
 				</div>
 			{/each}

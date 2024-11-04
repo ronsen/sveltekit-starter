@@ -2,6 +2,7 @@
 	"name": "sveltekit-starter",
 	"version": "0.0.1",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"start": "node build/index.js",
 		"dev": "vite dev",
@@ -18,10 +19,10 @@
 		"@sveltejs/adapter-node": "^5.2.8",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/node": "^22.8.4",
 		"autoprefixer": "^10.4.13",
-		"daisyui": "^4.4.18",
 		"marked": "^14.0.0",
 		"prisma": "^5.0.0",
 		"slugify": "^1.6.5",
@@ -31,7 +32,6 @@
 		"typescript": "^5.2.2",
 		"vite": "^5.0.0"
 	},
-	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^6.5.2",
 		"@fortawesome/free-solid-svg-icons": "^6.5.2",

@@ -1,5 +1,4 @@
-import type { Actions, PageServerLoad } from './$types';
-import { redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/database';
 
 export const load = (async ({ locals, url }) => {
@@ -17,19 +16,3 @@ export const load = (async ({ locals, url }) => {
 
 	return { posts, prevPage, nextPage };
 }) satisfies PageServerLoad;
-
-export const actions = {
-	default: async ({ url, cookies }) => {
-		const theme = url.searchParams.get('theme');
-		const redirectTo = url.searchParams.get('redirectTo');
-
-		if (theme) {
-			cookies.set('theme', theme, {
-				path: '/',
-				maxAge: 60 * 60 * 24 * 365
-			});
-		}
-
-		redirect(303, redirectTo ?? '/');
-	}
-} satisfies Actions;

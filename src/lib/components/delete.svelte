@@ -9,15 +9,25 @@
 	export let message: string;
 </script>
 
-<button title="Delete Note" class="text-error" on:click={() => dialog.show()}><Fa icon={faTrash} /></button>
+<button title="Delete Note" class="text-error" on:click={() => dialog.show()}
+	><Fa icon={faTrash} /></button
+>
 
-<dialog bind:this={dialog} class="modal">
-	<form {action} method="post" class="modal-box" on:submit|preventDefault={() => dialog.close()} use:enhance>
+<dialog bind:this={dialog} class="p-6 shadow border rounded w-3/4">
+	<form
+		{action}
+		method="post"
+		on:submit|preventDefault={() => dialog.close()}
+		use:enhance
+	>
 		<h3 class="font-bold text-lg">Confirm</h3>
 		<p class="py-4">{@html message}</p>
-		<div class="modal-action">
-			<button class="btn btn-neutral btn-sm" on:click|preventDefault={() => dialog.close()}>No</button>
-			<button type="submit" class="btn btn-error btn-sm">Yes</button>
+		<div class="inline-flex gap-3">
+			<button
+				class="p-2 rounded border"
+				on:click|preventDefault={() => dialog.close()}>No</button
+			>
+			<button type="submit" class="p-2 rounded border">Yes</button>
 		</div>
 	</form>
 </dialog>

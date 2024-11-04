@@ -10,7 +10,7 @@
 	<title>{data.tag?.name}</title>
 </svelte:head>
 
-<div class="flex justify-between items-center border-b border-gray-500 pb-2 mb-3">
+<div class="flex justify-between items-center border-b pb-2 mb-3">
 	<div class="title font-bold uppercase">{data.tag?.name}</div>
 </div>
 
