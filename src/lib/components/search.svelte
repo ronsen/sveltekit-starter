@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let q: string = "";
+	let { q }: { q: string } = $props();
 </script>
 
 <section class="mb-6">

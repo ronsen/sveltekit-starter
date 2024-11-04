@@ -3,7 +3,7 @@
 	import Navigation from "$lib/components/navigation.svelte";
 	import Posts from "$lib/components/posts.svelte";
 
-	export let data: PageServerData;
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <svelte:head>

@@ -3,7 +3,7 @@
 	import { enhance } from "$app/forms";
 	import Alert from "$lib/components/alert.svelte";
 
-	export let form: ActionData;
+	let { form }: { form: ActionData } = $props();
 </script>
 
 <svelte:head>

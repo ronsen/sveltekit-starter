@@ -4,14 +4,14 @@
 	import Posts from "$lib/components/posts.svelte";
 	import Search from "$lib/components/search.svelte";
 
-	export let data: PageServerData;
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <svelte:head>
 	<title>Catatan</title>
 </svelte:head>
 
-<Search />
+<Search q="" />
 
 <Posts posts={data.posts} />
 

@@ -3,7 +3,7 @@
 	import Alert from "$lib/components/alert.svelte";
 	import type { ActionData } from "./$types";
 
-	export let form: ActionData;
+	let { form }: { form: ActionData } = $props();
 </script>
 
 <svelte:head>

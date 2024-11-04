@@ -1,6 +1,10 @@
 <script lang="ts">
+    import type { Snippet } from "svelte";
+	
 	import Fa from "svelte-fa";
 	import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+
+	let { children }: { children: Snippet } = $props();
 </script>
 
 <div
@@ -8,6 +12,8 @@
 >
 	<div class="inline-flex items-center gap-1">
 		<Fa icon={faInfoCircle} />
-		<slot />
+		<div>
+			{@render children()}
+		</div>
 	</div>
 </div>

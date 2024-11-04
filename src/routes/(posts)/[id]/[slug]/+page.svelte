@@ -5,7 +5,7 @@
 	import Fa from "svelte-fa";
 	import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
-	export let data: PageServerData;
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <svelte:head>

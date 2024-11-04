@@ -3,12 +3,11 @@
 	import Alert from "$lib/components/alert.svelte";
 	import { enhance } from "$app/forms";
 
-	export let data: PageServerData;
-	export let form: ActionData;
+	let { data, form }: { data: PageServerData; form: ActionData } = $props();
 </script>
 
 <svelte:head>
-	<title>Edit Note</title>
+	<title>Edit Post</title>
 </svelte:head>
 
 {#if form?.error}

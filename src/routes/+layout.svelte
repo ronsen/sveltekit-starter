@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
 	import { page } from "$app/stores";
+	import type { Snippet } from "svelte";
 
 	import "../app.css";
 
@@ -11,6 +12,8 @@
 		faGears,
 		faPlus,
 	} from "@fortawesome/free-solid-svg-icons";
+
+	let { children }: { children: Snippet } = $props();
 </script>
 
 <main class="container md:w-[800px] px-8 mx-auto my-8">
@@ -33,5 +36,5 @@
 		</div>
 	</div>
 
-	<slot />
+	{@render children()}
 </main>

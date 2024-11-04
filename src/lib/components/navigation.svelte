@@ -5,9 +5,11 @@
 		faArrowRight,
 	} from "@fortawesome/free-solid-svg-icons";
 
-	export let prevPage: number;
-	export let nextPage: number;
-	export let href: string;
+	let {
+		prevPage,
+		nextPage,
+		href,
+	}: { prevPage: number; nextPage: number; href: string } = $props();
 </script>
 
 <div class="flex justify-between gap-3">

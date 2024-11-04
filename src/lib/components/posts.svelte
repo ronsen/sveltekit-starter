@@ -6,7 +6,7 @@
 	import Fa from "svelte-fa";
 	import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
-	export let posts: Post[];
+	let { posts }: { posts: Post[] } = $props();
 </script>
 
 {#if posts.length == 0}
