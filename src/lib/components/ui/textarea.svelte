@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
-
 	interface Prop {
 		name: string;
 		rows: number;
