@@ -18,13 +18,15 @@
 	><Fa icon={faTrash} /></button
 >
 
-<dialog bind:this={dialog} class="p-6 shadow border rounded w-3/4">
+<dialog bind:this={dialog} class="shadow border rounded w-3/4 md:w-1/2">
 	<form {action} method="post" onsubmit={() => dialog.close()} use:enhance>
-		<h3 class="font-bold text-lg">Confirm</h3>
-		<p class="py-4">{@html message}</p>
-		<div class="inline-flex gap-3">
-			<button class="p-2 rounded border" onclick={close}>No</button>
-			<button type="submit" class="p-2 rounded border">Yes</button>
+		<div class="p-4">
+			<h3 class="font-bold mb-3">Confirm</h3>
+			<p>{@html message}</p>
+		</div>
+		<div class="p-4 bg-zinc-50 w-full flex justify-end gap-4 text-sm">
+			<button class="hover:underline" onclick={close}>No</button>
+			<button type="submit" class="font-bold hover:underline">Yes</button>
 		</div>
 	</form>
 </dialog>

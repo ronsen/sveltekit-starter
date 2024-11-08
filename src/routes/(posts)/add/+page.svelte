@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
 	import Alert from "$lib/components/alert.svelte";
+	import Button from "$lib/components/ui/button.svelte";
+	import Input from "$lib/components/ui/input.svelte";
+	import Textarea from "$lib/components/ui/textarea.svelte";
 	import type { ActionData } from "./$types";
 
 	let { form }: { form: ActionData } = $props();
@@ -16,17 +19,17 @@
 
 <form method="post" enctype="multipart/form-data" use:enhance>
 	<div class="mb-3">
-		<input type="text" name="title" placeholder="Title" class="rounded w-full">
+		<Input type="text" name="title" value="" placeholder="Title" />
 	</div>
 	<div class="mb-3">
-		<input type="file" name="file" accept="image/jpeg" class="w-full">
+		<input type="file" name="file" accept="image/jpeg" class="w-full" />
 	</div>
 	<div class="mb-3">
-		<textarea name="content" rows="5" placeholder="Content" class="rounded w-full"></textarea>
+		<Textarea name="content" rows={5} value="" placeholder="Content" />
 	</div>
 	<div class="mb-3">
-		<input type="text" name="tagcsv" placeholder="Tags" class="rounded w-full">
+		<Input type="text" name="tagcsv" value="" placeholder="Tags" />
 		<div class="mt-1 text-xs">Seperated by comma.</div>
 	</div>
-	<button type="submit" class="p-2 rounded border">Save</button>
+	<Button type="submit">Save</Button>
 </form>
