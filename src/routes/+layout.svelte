@@ -29,7 +29,7 @@
 			{#if !$page.data.user}
 				<a href="/login" title="Sign In"><Fa icon={faSignIn} /></a>
 			{:else}
-				<form method="POST" action="/logout" use:enhance>
+				<form method="POST" action="/logout" class="inline-flex" use:enhance>
 					<button type="submit" title="Sign Out"><Fa icon={faSignOut} /></button>
 				</form>
 			{/if}
