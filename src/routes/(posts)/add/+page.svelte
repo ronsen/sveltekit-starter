@@ -19,16 +19,16 @@
 
 <form method="post" enctype="multipart/form-data" use:enhance>
 	<div class="mb-3">
-		<Input type="text" name="title" value="" placeholder="Title" />
+		<Input type="text" name="title" placeholder="Title" />
 	</div>
 	<div class="mb-3">
 		<input type="file" name="file" accept="image/jpeg" class="w-full" />
 	</div>
 	<div class="mb-3">
-		<Textarea name="content" rows={5} value="" placeholder="Content" />
+		<Textarea name="content" rows={5} placeholder="Content" />
 	</div>
 	<div class="mb-3">
-		<Input type="text" name="tagcsv" value="" placeholder="Tags" />
+		<Input type="text" name="tagcsv" placeholder="Tags" />
 		<div class="mt-1 text-xs">Seperated by comma.</div>
 	</div>
 	<Button type="submit">Save</Button>

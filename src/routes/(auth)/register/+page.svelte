@@ -18,15 +18,10 @@
 
 <form method="post" use:enhance>
 	<div class="mb-3">
-		<Input type="text" name="username" value="" placeholder="Username" />
+		<Input type="text" name="username" placeholder="Username" />
 	</div>
 	<div class="mb-3">
-		<Input
-			type="password"
-			name="password"
-			value=""
-			placeholder="Password"
-		/>
+		<Input type="password" name="password" placeholder="Password" />
 	</div>
 	<div class="inline-flex items-center gap-3">
 		<Button type="submit">Register</Button>

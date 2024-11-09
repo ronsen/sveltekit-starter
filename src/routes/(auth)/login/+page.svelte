@@ -18,13 +18,12 @@
 
 <form method="post" use:enhance>
 	<div class="mb-3">
-		<Input type="text" name="username" value="" placeholder="Username" />
+		<Input type="text" name="username" placeholder="Username" />
 	</div>
 	<div class="mb-3">
 		<Input
 			type="password"
 			name="password"
-			value=""
 			placeholder="Password"
 		/>
 	</div>

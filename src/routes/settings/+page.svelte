@@ -21,7 +21,6 @@
 		<Input
 			type="password"
 			name="password"
-			value=""
 			placeholder="Password"
 		/>
 	</div>

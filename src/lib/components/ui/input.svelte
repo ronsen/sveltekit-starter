@@ -2,8 +2,8 @@
 	interface Prop {
 		type: "text" | "password";
 		name: string;
-		value: string | null;
-		placeholder: string;
+		value?: string | null;
+		placeholder?: string;
 	}
 
 	let { type, name, value, placeholder }: Prop = $props();

@@ -2,8 +2,8 @@
 	interface Prop {
 		name: string;
 		rows: number;
-		value: string | null;
-		placeholder: string | null;
+		value?: string | null;
+		placeholder?: string | null;
 	}
 
 	let { name, value, rows, placeholder }: Prop = $props();
