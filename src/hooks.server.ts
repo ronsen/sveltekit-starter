@@ -26,6 +26,11 @@ export const handle = (async ({ event, resolve }) => {
 				id: user.id,
 				name: user.username
 			}
+		} else {
+			event.cookies.set('session', '', {
+				path: '/',
+				expires: new Date(0)
+			});
 		}
 	} else {
 		if (
