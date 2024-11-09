@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Fa from "svelte-fa";
 	import Input from "./ui/input.svelte";
+
+	import Fa from "svelte-fa";
 	import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 	let { q }: { q: string } = $props();

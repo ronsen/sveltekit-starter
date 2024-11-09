@@ -4,7 +4,7 @@
 	import { enhance } from "$app/forms";
 	import Input from "$lib/components/ui/input.svelte";
 	import Textarea from "$lib/components/ui/textarea.svelte";
-    import Button from "$lib/components/ui/button.svelte";
+	import Button from "$lib/components/ui/button.svelte";
 
 	let { data, form }: { data: PageServerData; form: ActionData } = $props();
 </script>
