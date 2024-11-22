@@ -23,7 +23,7 @@
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/node": "^22.8.4",
 		"autoprefixer": "^10.4.13",
-		"marked": "^14.0.0",
+		"marked": "^15.0.2",
 		"prisma": "^5.0.0",
 		"slugify": "^1.6.5",
 		"svelte": "^5.0.0",

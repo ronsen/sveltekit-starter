@@ -18,13 +18,12 @@
 	><Fa icon={faTrash} /></button
 >
 
-<dialog bind:this={dialog} class="shadow border rounded w-3/4 md:w-1/2">
+<dialog bind:this={dialog} class="shadow border dark:border-zinc-700 dark:bg-zinc-800 dark:text-white/90 rounded w-3/4 md:w-1/2">
 	<form {action} method="post" onsubmit={() => dialog.close()} use:enhance>
-		<div class="p-4">
-			<h3 class="font-bold mb-3">Confirm</h3>
+		<div class="p-6">
 			<p>{@html message}</p>
 		</div>
-		<div class="p-4 bg-zinc-50 w-full flex justify-end gap-4 text-sm">
+		<div class="p-4 bg-zinc-50 dark:bg-zinc-900 w-full flex justify-end gap-4 text-sm">
 			<button class="hover:underline" onclick={close}>No</button>
 			<button type="submit" class="font-bold hover:underline">Yes</button>
 		</div>

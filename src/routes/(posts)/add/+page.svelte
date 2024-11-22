@@ -25,7 +25,7 @@
 		<input type="file" name="file" accept="image/jpeg" class="w-full" />
 	</div>
 	<div class="mb-3">
-		<Textarea name="content" rows={5} placeholder="Content" />
+		<Textarea name="content" rows={5} />
 	</div>
 	<div class="mb-3">
 		<Input type="text" name="tagcsv" placeholder="Tags" />

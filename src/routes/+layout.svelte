@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { LayoutData, SubmitFunction } from "./$types";
 	import { enhance } from "$app/forms";
 	import { page } from "$app/stores";
 	import type { Snippet } from "svelte";
@@ -7,13 +8,25 @@
 
 	import Fa from "svelte-fa";
 	import {
+		faSun,
+		faMoon,
 		faSignIn,
 		faSignOut,
 		faGears,
 		faPlus,
 	} from "@fortawesome/free-solid-svg-icons";
 
-	let { children }: { children: Snippet } = $props();
+	let { children, data }: { children: Snippet; data: LayoutData } = $props();
+
+	let theme = $state(data.theme);
+
+	const updateTheme: SubmitFunction = ({ action }) => {
+		theme = action.searchParams.get("theme") ?? data.theme;
+
+		if (theme) {
+			document.documentElement.setAttribute("class", theme);
+		}
+	};
 </script>
 
 <main class="container md:w-[800px] px-8 mx-auto my-8">
@@ -26,11 +39,37 @@
 				<a href="/settings" title="Settings"><Fa icon={faGears} /></a>
 			{/if}
 
+			<form
+				method="post"
+				class="inline-flex gap-4"
+				use:enhance={updateTheme}
+			>
+				{#if theme == "dark"}
+					<button
+						formaction="/?theme=light&redirectTo={$page.url
+							.pathname}"><Fa icon={faMoon} /></button
+					>
+				{/if}
+				{#if theme == "light"}
+					<button
+						formaction="/?theme=dark&redirectTo={$page.url
+							.pathname}"><Fa icon={faSun} /></button
+					>
+				{/if}
+			</form>
+
 			{#if !$page.data.user}
 				<a href="/login" title="Sign In"><Fa icon={faSignIn} /></a>
 			{:else}
-				<form method="POST" action="/logout" class="inline-flex" use:enhance>
-					<button type="submit" title="Sign Out"><Fa icon={faSignOut} /></button>
+				<form
+					method="POST"
+					action="/logout"
+					class="inline-flex"
+					use:enhance
+				>
+					<button type="submit" title="Sign Out"
+						><Fa icon={faSignOut} /></button
+					>
 				</form>
 			{/if}
 		</div>

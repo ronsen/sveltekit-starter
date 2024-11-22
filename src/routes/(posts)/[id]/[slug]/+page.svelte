@@ -13,7 +13,7 @@
 </svelte:head>
 
 <article>
-	<div class="flex justify-between items-center border-b pb-3 mb-3">
+	<div class="flex justify-between items-center border-b dark:border-zinc-700 pb-3 mb-3">
 		<div class="title font-bold">{data.post?.title}</div>
 		<div class="inline-flex gap-3">
 			<a href="/{data.post?.id}/edit" title="Edit"><Fa icon={faPencil} /></a>
@@ -27,14 +27,14 @@
 		</div>
 	{/if}
 
-	<div class="content prose max-w-none mb-3">
+	<div class="content prose max-w-none mb-3 dark:prose-invert">
 		{@html data.post?.contentToHtml}
 	</div>
 
 	{#if data.post?.tags}
 		<div class="flex justify-center gap-2">
 			{#each data.post?.tags as tag}
-				<div class="bg-zinc-100 rounded px-2 py-1 text-sm">
+				<div class="bg-zinc-200 dark:bg-zinc-700 rounded px-2 py-1 text-sm">
 					<a href="/tag/{tag.slug}">{tag.name}</a>
 				</div>
 			{/each}

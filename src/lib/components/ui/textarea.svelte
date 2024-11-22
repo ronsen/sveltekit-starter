@@ -14,5 +14,5 @@
 	bind:value
 	{rows}
 	{placeholder}
-	class="w-full rounded-lg border-zinc-300 font-mono text-sm"
+	class="w-full rounded-lg border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700 font-mono text-sm"
 ></textarea>

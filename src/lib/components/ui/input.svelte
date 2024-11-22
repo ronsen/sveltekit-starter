@@ -14,5 +14,5 @@
 	{name}
 	bind:value
 	{placeholder}
-	class="w-full rounded-lg border-zinc-300"
+	class="w-full rounded-lg border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700"
 />

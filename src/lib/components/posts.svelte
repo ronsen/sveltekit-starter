@@ -12,15 +12,18 @@
 {#if posts.length == 0}
 	<Alert>Empty.</Alert>
 {:else}
-	<div class="notes mb-6">
+	<div class="mb-6">
 		{#each posts as post}
-			<div class="note flex justify-between items-baseline border-b pb-2 mb-2">
-				<div class="note-title">
-					<a href="/{post.id}/{post.slug}">{post.title}</a>
-				</div>
+			<div class="flex justify-between items-baseline border-b dark:border-zinc-700 pb-2 mb-2">
+				<a href="/{post.id}/{post.slug}" class="block w-full">{post.title}</a>
 				<div class="inline-flex gap-3">
-					<a href="/{post.id}/edit" title="Edit"><Fa icon={faPencil} /></a>
-					<Delete message="Delete: {post.title}?" action="/{post.id}/delete" />
+					<a href="/{post.id}/edit" title="Edit"
+						><Fa icon={faPencil} /></a
+					>
+					<Delete
+						message="Delete: {post.title}?"
+						action="/{post.id}/delete"
+					/>
 				</div>
 			</div>
 		{/each}

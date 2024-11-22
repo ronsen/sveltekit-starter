@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
-	
+	import type { Snippet } from "svelte";
+
 	import Fa from "svelte-fa";
 	import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,9 +8,9 @@
 </script>
 
 <div
-	class="inline-flex items-center gap-2 p-4 w-full border rounded shadow mb-6"
+	class="inline-flex items-center gap-2 p-4 w-full border border-amber-400 bg-amber-50 text-black/90 rounded shadow mb-6 text-sm"
 >
-	<div class="inline-flex items-center gap-1">
+	<div class="inline-flex items-center gap-2">
 		<Fa icon={faInfoCircle} />
 		<div>
 			{@render children()}

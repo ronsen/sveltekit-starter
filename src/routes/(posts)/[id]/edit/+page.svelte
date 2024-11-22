@@ -35,7 +35,6 @@
 			name="content"
 			rows={10}
 			value={data.post?.content}
-			placeholder="Content"
 		/>
 	</div>
 	<div class="mb-3">
