@@ -49,8 +49,7 @@
 						formaction="/?theme=light&redirectTo={$page.url
 							.pathname}"><Fa icon={faMoon} /></button
 					>
-				{/if}
-				{#if theme == "light"}
+				{:else}
 					<button
 						formaction="/?theme=dark&redirectTo={$page.url
 							.pathname}"><Fa icon={faSun} /></button
