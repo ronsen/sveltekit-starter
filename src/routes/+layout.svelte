@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { LayoutData, SubmitFunction } from "./$types";
 	import { enhance } from "$app/forms";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import type { Snippet } from "svelte";
 
 	import "../app.css";
@@ -34,7 +34,7 @@
 		<h1 class="font-bold uppercase"><a href="/">Demo</a></h1>
 
 		<div class="inline-flex items-center gap-4">
-			{#if $page.data.user}
+			{#if page.data.user}
 				<a href="/add" title="Add New Note"><Fa icon={faPlus} /></a>
 				<a href="/settings" title="Settings"><Fa icon={faGears} /></a>
 			{/if}
@@ -46,18 +46,18 @@
 			>
 				{#if theme == "dark"}
 					<button
-						formaction="/?theme=light&redirectTo={$page.url
+						formaction="/?theme=light&redirectTo={page.url
 							.pathname}"><Fa icon={faMoon} /></button
 					>
 				{:else}
 					<button
-						formaction="/?theme=dark&redirectTo={$page.url
-							.pathname}"><Fa icon={faSun} /></button
+						formaction="/?theme=dark&redirectTo={page.url.pathname}"
+						><Fa icon={faSun} /></button
 					>
 				{/if}
 			</form>
 
-			{#if !$page.data.user}
+			{#if !page.data.user}
 				<a href="/login" title="Sign In"><Fa icon={faSignIn} /></a>
 			{:else}
 				<form
