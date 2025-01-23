@@ -21,7 +21,7 @@
 						><Fa icon={faPencil} /></a
 					>
 					<Delete
-						message="Delete: {post.title}?"
+						message="{post.title}?"
 						action="/{post.id}/delete"
 					/>
 				</div>

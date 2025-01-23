@@ -34,7 +34,7 @@
 	{#if data.post?.tags}
 		<div class="flex justify-center gap-2">
 			{#each data.post?.tags as tag}
-				<div class="bg-zinc-200 dark:bg-zinc-700 rounded px-2 py-1 text-sm">
+				<div class="bg-zinc-200 dark:bg-zinc-700 rounded-sm px-2 py-1 text-sm">
 					<a href="/tag/{tag.slug}">{tag.name}</a>
 				</div>
 			{/each}

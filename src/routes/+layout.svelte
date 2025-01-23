@@ -46,11 +46,13 @@
 			>
 				{#if theme == "dark"}
 					<button
+						class="cursor-pointer"
 						formaction="/?theme=light&redirectTo={page.url
 							.pathname}"><Fa icon={faMoon} /></button
 					>
 				{:else}
 					<button
+						class="cursor-pointer"
 						formaction="/?theme=dark&redirectTo={page.url.pathname}"
 						><Fa icon={faSun} /></button
 					>

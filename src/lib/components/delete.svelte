@@ -14,18 +14,25 @@
 	}
 </script>
 
-<button title="Delete Post" class="text-error" onclick={() => dialog.show()}
+<button title="Delete Post" class="cursor-pointer" onclick={() => dialog.show()}
 	><Fa icon={faTrash} /></button
 >
 
-<dialog bind:this={dialog} class="shadow border dark:border-zinc-700 dark:bg-zinc-800 dark:text-white/90 rounded w-3/4 md:w-1/2">
+<dialog
+	bind:this={dialog}
+	class="mx-auto shadow-sm border dark:border-zinc-700 dark:bg-zinc-800 dark:text-white/90 rounded-sm w-3/4 md:w-1/2"
+>
 	<form {action} method="post" onsubmit={() => dialog.close()} use:enhance>
 		<div class="p-6">
 			<p>{@html message}</p>
 		</div>
-		<div class="p-4 bg-zinc-50 dark:bg-zinc-900 w-full flex justify-end gap-4 text-sm">
-			<button class="hover:underline" onclick={close}>No</button>
-			<button type="submit" class="font-bold hover:underline">Yes</button>
+		<div
+			class="p-4 bg-zinc-50 dark:bg-zinc-900 w-full flex justify-end gap-4 text-sm"
+		>
+			<button class="hover:underline" onclick={close}>Cancel</button>
+			<button type="submit" class="font-bold hover:underline"
+				>Delete</button
+			>
 		</div>
 	</form>
 </dialog>
