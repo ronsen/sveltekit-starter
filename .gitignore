@@ -11,3 +11,7 @@ vite.config.ts.timestamp-*
 /prisma/*.db
 /prisma/migrations
 /static/images
+/.fleet
+/.idea
+/.vscode
+/.zed
