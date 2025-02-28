@@ -2,19 +2,10 @@
 	import type { LayoutData, SubmitFunction } from "./$types";
 	import { enhance } from "$app/forms";
 	import { page } from "$app/state";
+	import { CirclePlus, LogIn, LogOut, Moon, Settings, Sun } from "lucide-svelte";
 	import type { Snippet } from "svelte";
 
 	import "../app.css";
-
-	import Fa from "svelte-fa";
-	import {
-		faSun,
-		faMoon,
-		faSignIn,
-		faSignOut,
-		faGears,
-		faPlus,
-	} from "@fortawesome/free-solid-svg-icons";
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 
@@ -35,8 +26,8 @@
 
 		<div class="inline-flex items-center gap-4">
 			{#if page.data.user}
-				<a href="/add" title="Add New Note"><Fa icon={faPlus} /></a>
-				<a href="/settings" title="Settings"><Fa icon={faGears} /></a>
+				<a href="/add" title="Add New Note"><CirclePlus size={16} /></a>
+				<a href="/settings" title="Settings"><Settings size={16} /></a>
 			{/if}
 
 			<form
@@ -48,19 +39,19 @@
 					<button
 						class="cursor-pointer"
 						formaction="/?theme=light&redirectTo={page.url
-							.pathname}"><Fa icon={faMoon} /></button
+							.pathname}"><Moon size={16} /></button
 					>
 				{:else}
 					<button
 						class="cursor-pointer"
 						formaction="/?theme=dark&redirectTo={page.url.pathname}"
-						><Fa icon={faSun} /></button
+						><Sun size={16} /></button
 					>
 				{/if}
 			</form>
 
 			{#if !page.data.user}
-				<a href="/login" title="Sign In"><Fa icon={faSignIn} /></a>
+				<a href="/login" title="Sign In"><LogIn size={16} /></a>
 			{:else}
 				<form
 					method="POST"
@@ -69,7 +60,7 @@
 					use:enhance
 				>
 					<button type="submit" title="Sign Out"
-						><Fa icon={faSignOut} /></button
+						><LogOut size={16} /></button
 					>
 				</form>
 			{/if}

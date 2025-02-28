@@ -1,9 +1,7 @@
 <script lang="ts">
 	import type { PageServerData } from "./$types";
+	import { Pencil } from "lucide-svelte";
 	import Delete from "$lib/components/delete.svelte";
-
-	import Fa from "svelte-fa";
-	import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 	let { data }: { data: PageServerData } = $props();
 </script>
@@ -16,7 +14,7 @@
 	<div class="flex justify-between items-center border-b dark:border-zinc-700 pb-3 mb-3">
 		<div class="title font-bold">{data.post?.title}</div>
 		<div class="inline-flex gap-3">
-			<a href="/{data.post?.id}/edit" title="Edit"><Fa icon={faPencil} /></a>
+			<a href="/{data.post?.id}/edit" title="Edit"><Pencil size={16} /></a>
 			<Delete message="Delete this post?" action="/{data.post?.id}/delete" />
 		</div>
 	</div>

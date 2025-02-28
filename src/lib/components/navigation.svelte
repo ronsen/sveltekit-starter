@@ -1,9 +1,5 @@
 <script lang="ts">
-	import Fa from "svelte-fa";
-	import {
-		faArrowLeft,
-		faArrowRight,
-	} from "@fortawesome/free-solid-svg-icons";
+	import { MoveLeft, MoveRight } from "lucide-svelte";
 
 	let {
 		prevPage,
@@ -14,14 +10,14 @@
 
 <div class="flex justify-between gap-3">
 	{#if prevPage > 0}
-		<a href="{href}page={prevPage}"><Fa icon={faArrowLeft} /></a>
+		<a href="{href}page={prevPage}"><MoveLeft size={16} /></a>
 	{:else}
-		<button class="cursor-default"><Fa icon={faArrowLeft} /></button>
+		<button class="cursor-default"><MoveLeft size={16} /></button>
 	{/if}
 
 	{#if nextPage > 0}
-		<a href="{href}page={nextPage}"><Fa icon={faArrowRight} /></a>
+		<a href="{href}page={nextPage}"><MoveRight size={16} /></a>
 	{:else}
-		<button class="cursor-default"><Fa icon={faArrowRight} /></button>
+		<button class="cursor-default"><MoveRight size={16} /></button>
 	{/if}
 </div>

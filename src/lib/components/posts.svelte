@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type { Post } from "@prisma/client";
+	import { Pencil } from "lucide-svelte";
 	import Alert from "$lib/components/alert.svelte";
 	import Delete from "./delete.svelte";
-
-	import Fa from "svelte-fa";
-	import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 	let { posts }: { posts: Post[] } = $props();
 </script>
@@ -18,7 +16,7 @@
 				<a href="/{post.id}/{post.slug}" class="block w-full">{post.title}</a>
 				<div class="inline-flex gap-3">
 					<a href="/{post.id}/edit" title="Edit"
-						><Fa icon={faPencil} /></a
+						><Pencil size={16} /></a
 					>
 					<Delete
 						message="{post.title}?"

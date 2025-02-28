@@ -33,9 +33,7 @@
 		"vite": "^6.0.5"
 	},
 	"dependencies": {
-		"@fortawesome/free-brands-svg-icons": "^6.5.2",
-		"@fortawesome/free-solid-svg-icons": "^6.5.2",
 		"@prisma/client": "^6.1.0",
-		"svelte-fa": "^4.0.2"
+		"lucide-svelte": "^0.476.0"
 	}
 }

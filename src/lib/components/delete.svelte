@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
-
-	import Fa from "svelte-fa";
-	import { faTrash } from "@fortawesome/free-solid-svg-icons";
+	import { Trash } from "lucide-svelte";
 
 	let { action, message }: { action: string; message: string } = $props();
 
@@ -15,7 +13,7 @@
 </script>
 
 <button title="Delete Post" class="cursor-pointer" onclick={() => dialog.show()}
-	><Fa icon={faTrash} /></button
+	><Trash size={16} /></button
 >
 
 <dialog
