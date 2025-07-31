@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
-	import { Trash } from "lucide-svelte";
+	import { Trash } from "@lucide/svelte";
 
 	let { action, message }: { action: string; message: string } = $props();
 
@@ -12,13 +12,15 @@
 	}
 </script>
 
-<button title="Delete Post" class="cursor-pointer" onclick={() => dialog.show()}
-	><Trash size={16} /></button
+<button
+	title="Delete Post"
+	class="cursor-pointer"
+	onclick={() => dialog.showModal()}><Trash size={16} /></button
 >
 
 <dialog
 	bind:this={dialog}
-	class="mx-auto shadow-sm border dark:border-zinc-700 dark:bg-zinc-800 dark:text-white/90 rounded-sm w-3/4 md:w-1/2"
+	class="m-auto shadow-sm border dark:border-zinc-700 dark:bg-zinc-800 dark:text-white/90 rounded-sm w-3/4 md:w-1/2 backdrop:backdrop-blur-sm"
 >
 	<form {action} method="post" onsubmit={() => dialog.close()} use:enhance>
 		<div class="p-6">
@@ -27,9 +29,12 @@
 		<div
 			class="p-4 bg-zinc-50 dark:bg-zinc-900 w-full flex justify-end gap-4 text-sm"
 		>
-			<button class="hover:underline" onclick={close}>Cancel</button>
-			<button type="submit" class="font-bold hover:underline"
-				>Delete</button
+			<button class="hover:underline cursor-pointer" onclick={close}
+				>Cancel</button
+			>
+			<button
+				type="submit"
+				class="font-bold hover:underline cursor-pointer">Delete</button
 			>
 		</div>
 	</form>

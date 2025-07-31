@@ -2,7 +2,14 @@
 	import type { LayoutData, SubmitFunction } from "./$types";
 	import { enhance } from "$app/forms";
 	import { page } from "$app/state";
-	import { CirclePlus, LogIn, LogOut, Moon, Settings, Sun } from "lucide-svelte";
+	import {
+		CirclePlus,
+		LogIn,
+		LogOut,
+		Moon,
+		Settings,
+		Sun,
+	} from "@lucide/svelte";
 	import type { Snippet } from "svelte";
 
 	import "../app.css";
@@ -59,8 +66,10 @@
 					class="inline-flex"
 					use:enhance
 				>
-					<button type="submit" title="Sign Out"
-						><LogOut size={16} /></button
+					<button
+						type="submit"
+						class="cursor-pointer"
+						title="Sign Out"><LogOut size={16} /></button
 					>
 				</form>
 			{/if}

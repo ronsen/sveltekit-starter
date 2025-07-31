@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import { CircleAlert } from "lucide-svelte";
+	import { CircleAlert } from "@lucide/svelte";
 
 	let { children }: { children: Snippet } = $props();
 </script>

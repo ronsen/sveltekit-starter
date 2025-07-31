@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MoveLeft, MoveRight } from "lucide-svelte";
+	import { MoveLeft, MoveRight } from "@lucide/svelte";
 
 	let {
 		prevPage,

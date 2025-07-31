@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from "./$types";
-	import { Pencil } from "lucide-svelte";
+	import { Pencil } from "@lucide/svelte";
 	import Delete from "$lib/components/delete.svelte";
 
 	let { data }: { data: PageServerData } = $props();
@@ -11,11 +11,17 @@
 </svelte:head>
 
 <article>
-	<div class="flex justify-between items-center border-b dark:border-zinc-700 pb-3 mb-3">
+	<div
+		class="flex justify-between items-center border-b dark:border-zinc-700 pb-3 mb-3"
+	>
 		<div class="title font-bold">{data.post?.title}</div>
 		<div class="inline-flex gap-3">
-			<a href="/{data.post?.id}/edit" title="Edit"><Pencil size={16} /></a>
-			<Delete message="Delete this post?" action="/{data.post?.id}/delete" />
+			<a href="/{data.post?.id}/edit" title="Edit"><Pencil size={16} /></a
+			>
+			<Delete
+				message="Delete this post?"
+				action="/{data.post?.id}/delete"
+			/>
 		</div>
 	</div>
 
@@ -32,7 +38,9 @@
 	{#if data.post?.tags}
 		<div class="flex justify-center gap-2">
 			{#each data.post?.tags as tag}
-				<div class="bg-zinc-200 dark:bg-zinc-700 rounded-sm px-2 py-1 text-sm">
+				<div
+					class="bg-zinc-200 dark:bg-zinc-700 rounded-sm px-2 py-1 text-sm"
+				>
 					<a href="/tag/{tag.slug}">{tag.name}</a>
 				</div>
 			{/each}
