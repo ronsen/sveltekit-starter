@@ -4,3 +4,15 @@
 @plugin '@tailwindcss/forms';
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.btn {
+	@apply rounded-lg border border-zinc-300 hover:border-zinc-400 bg-white px-3 py-2 text-sm dark:bg-zinc-800 dark:border-zinc-700 dark:hover:border-zinc-600;
+}
+
+.input {
+	@apply w-full rounded-lg border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700;
+}
+
+.textarea {
+	@apply w-full rounded-lg border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700 font-mono text-sm;
+}
