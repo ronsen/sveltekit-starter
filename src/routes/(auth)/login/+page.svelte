@@ -33,6 +33,6 @@
 	</div>
 	<div class="inline-flex items-center gap-3">
 		<button type="submit" class="btn">Sign In</button>
-		<a href="/register">Register</a>
+		<a href="/register" class="hover:underline">Register</a>
 	</div>
 </form>
