@@ -1,9 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import { withAccelerate } from '@prisma/extension-accelerate';
 
-const db = global.db || new PrismaClient();
-
-if (process.env.NODE_ENV === 'development') {
-	global.db = db;
-}
+const db = new PrismaClient().$extends(withAccelerate());
 
 export { db };

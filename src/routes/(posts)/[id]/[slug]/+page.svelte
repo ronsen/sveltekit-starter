@@ -1,9 +1,23 @@
 <script lang="ts">
-	import type { PageServerData } from "./$types";
 	import { Pencil } from "@lucide/svelte";
 	import Delete from "$lib/components/delete.svelte";
+	import type { Tag } from "@prisma/client";
 
-	let { data }: { data: PageServerData } = $props();
+	interface Post {
+		id: number;
+		title: string;
+		photo: string;
+		contentToHtml: string;
+		tags: Tag[];
+	}
+
+	interface PageServerData {
+		data: {
+			post: Post;
+		};
+	}
+
+	let { data }: PageServerData = $props();
 </script>
 
 <svelte:head>

@@ -2,6 +2,7 @@
 	import type { LayoutData, SubmitFunction } from "./$types";
 	import { enhance } from "$app/forms";
 	import { page } from "$app/state";
+	import type { Snippet } from "svelte";
 	import {
 		CirclePlus,
 		LogIn,
@@ -10,7 +11,6 @@
 		Settings,
 		Sun,
 	} from "@lucide/svelte";
-	import type { Snippet } from "svelte";
 
 	import "../app.css";
 

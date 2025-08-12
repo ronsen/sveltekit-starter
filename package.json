@@ -16,7 +16,8 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^9.0.3",
-		"@lucide/svelte": "^0.536.0",
+		"@lucide/svelte": "^0.539.0",
+		"@prisma/extension-accelerate": "^2.0.2",
 		"@sveltejs/adapter-node": "^5.2.8",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
