@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@faker-js/faker": "^9.0.3",
 		"@lucide/svelte": "^0.539.0",
+		"@node-rs/argon2": "^2.0.2",
 		"@prisma/extension-accelerate": "^2.0.2",
 		"@sveltejs/adapter-node": "^5.2.8",
 		"@sveltejs/kit": "^2.0.0",

@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { db } from '$lib/server/database';
-import crypto from 'crypto';
+import { verify } from '@node-rs/argon2';
 
 export const actions = {
 	default: async ({ cookies, request }) => {
@@ -24,7 +24,14 @@ export const actions = {
 				message: 'User not exists.'
 			});
 		} else {
-			if (user.password != crypto.createHash('sha256').update(password).digest('hex')) {
+			const validPassword = await verify(user.password, password, {
+				memoryCost: 19456,
+				timeCost: 2,
+				outputLen: 32,
+				parallelism: 1,
+			});
+
+			if (!validPassword) {
 				return fail(400, {
 					error: true,
 					message: 'You have entered invalid credentials.'
