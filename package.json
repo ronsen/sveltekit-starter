@@ -15,8 +15,8 @@
 		"seed": "node prisma/seed.js"
 	},
 	"devDependencies": {
-		"@faker-js/faker": "^9.0.3",
-		"@lucide/svelte": "^0.539.0",
+		"@faker-js/faker": "^10.0.0",
+		"@lucide/svelte": "^0.546.0",
 		"@node-rs/argon2": "^2.0.2",
 		"@prisma/extension-accelerate": "^2.0.2",
 		"@sveltejs/adapter-node": "^5.2.8",
