@@ -11,9 +11,6 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
-	"prisma": {
-		"seed": "node prisma/seed.js"
-	},
 	"devDependencies": {
 		"@faker-js/faker": "^10.4.0",
 		"@lucide/svelte": "^1.18.0",
