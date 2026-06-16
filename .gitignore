@@ -1,17 +1,29 @@
-.DS_Store
 node_modules
-/build
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
 /.svelte-kit
-/package
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
 .env
 .env.*
 !.env.example
+!.env.test
+
+# Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Prisma
 /prisma/*.db
 /prisma/migrations
+
 /static/images
-/.fleet
-/.idea
-/.vscode
-/.zed

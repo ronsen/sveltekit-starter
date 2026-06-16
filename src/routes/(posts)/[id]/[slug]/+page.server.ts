@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/server/database';
+import { db } from '$lib/database';
 import { redirect } from "@sveltejs/kit";
 import { marked } from "marked";
 
@@ -15,7 +15,7 @@ export const load = (async ({ locals, params }) => {
 	});
 
 	if (!post) {
-		redirect(302, '/');
+		throw redirect(302, '/');
 	}
 
 	return {

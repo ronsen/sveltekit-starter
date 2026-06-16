@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { db } from '$lib/server/database';
+import { db } from '$lib/database';
 import { hash } from '@node-rs/argon2';
 
 export const actions = {
@@ -40,6 +40,6 @@ export const actions = {
 			}
 		})
 
-		redirect(303, '/login');
+		throw redirect(303, '/login');
 	}
 } satisfies Actions;

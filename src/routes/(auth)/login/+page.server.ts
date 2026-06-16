@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { db } from '$lib/server/database';
+import { db } from '$lib/database';
 import { verify } from '@node-rs/argon2';
 
 export const actions = {
@@ -53,6 +53,6 @@ export const actions = {
 			maxAge: 60 * 60 * 24 * 30
 		});
 
-		redirect(302, '/');
+		throw redirect(302, '/');
 	}
 } satisfies Actions;

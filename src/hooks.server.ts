@@ -1,5 +1,5 @@
 import { redirect, type Handle } from "@sveltejs/kit";
-import { db } from "$lib/server/database";
+import { db } from "$lib/database";
 
 export const handle = (async ({ event, resolve }) => {
 	let theme: string = 'light';

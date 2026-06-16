@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { db } from '$lib/server/database';
+import { db } from '$lib/database';
 
 export const load = (async ({ params, url }) => {
 	const page = Number(url.searchParams.get('page') ?? '1');

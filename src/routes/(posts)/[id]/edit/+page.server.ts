@@ -2,9 +2,9 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from "./$types";
 import { writeFileSync } from "fs";
 import slugify from 'slugify';
-import { db } from '$lib/server/database';
-import { getTagIds } from "$lib/server/services";
-import type { Tag } from "@prisma/client";
+import { db } from '$lib/database';
+import type { Post, Tag } from "@prisma/client";
+import { TagRepository } from '$lib/tags';
 
 export const load = (async ({ locals, params }) => {
 	const post = await db.post.findFirst({
@@ -15,10 +15,10 @@ export const load = (async ({ locals, params }) => {
 			]
 		},
 		include: { tags: true }
-	});
+	}) as (Post & { tags: Tag[] }) | null;
 
 	if (!post) {
-		redirect(302, '/');
+		throw redirect(302, '/');
 	}
 
 	return {
@@ -67,7 +67,7 @@ export const actions = {
 		}
 
 
-		const ids = await getTagIds(tagcsv);
+		const ids = await TagRepository.getIds(tagcsv);
 
 		await db.post.update({
 			where: { id: Number(params.id) },
@@ -82,6 +82,6 @@ export const actions = {
 			}
 		});
 
-		redirect(302, `/${post?.id}/${post?.slug}`);
+		throw redirect(302, `/${post?.id}/${post?.slug}`);
 	}
 } satisfies Actions;

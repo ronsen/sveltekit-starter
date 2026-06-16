@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { db } from '$lib/server/database';
+import { db } from '$lib/database';
 
 export const actions = {
 	default: async ({ locals, request }) => {
@@ -24,6 +24,6 @@ export const actions = {
 			}
 		})
 
-		redirect(302, '/');
+		throw redirect(302, '/');
 	}
 } satisfies Actions;

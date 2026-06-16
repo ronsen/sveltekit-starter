@@ -2,8 +2,9 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import slugify from 'slugify';
 import { writeFileSync } from "fs";
-import { db } from '$lib/server/database';
-import { getTagIds } from "$lib/server/services";
+import { db } from '$lib/database';
+import { TagRepository } from '$lib/tags';
+
 
 export const actions = {
 	default: async ({ locals, request }) => {
@@ -35,7 +36,7 @@ export const actions = {
 			writeFileSync(`static/${filename}`, Buffer.from(await file.arrayBuffer()));
 		}
 
-		const ids = await getTagIds(tagcsv);
+		const ids = await TagRepository.getIds(tagcsv);
 
 		const post = await db.post.create({
 			data: {

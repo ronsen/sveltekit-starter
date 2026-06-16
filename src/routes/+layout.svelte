@@ -12,11 +12,15 @@
 		Sun,
 	} from "@lucide/svelte";
 
-	import "../app.css";
+	import "./layout.css";
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 
-	let theme = $state(data.theme);
+	let theme = $state("");
+
+	$effect(() => {
+		theme = data.theme;
+	});
 
 	const updateTheme: SubmitFunction = ({ action }) => {
 		theme = action.searchParams.get("theme") ?? data.theme;
@@ -26,6 +30,10 @@
 		}
 	};
 </script>
+
+<svelte:head>
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+</svelte:head>
 
 <main class="container md:w-[800px] px-8 mx-auto my-8">
 	<div class="flex justify-between items-center border-b pb-2 mb-8">
