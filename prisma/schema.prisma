@@ -1,10 +1,15 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
 generator client {
-    provider = "prisma-client-js"
+    provider = "prisma-client"
+    output   = "../generated/prisma"
 }
 
 datasource db {
     provider = "sqlite"
-    url      = env("DATABASE_URL")
 }
 
 model User {
@@ -16,7 +21,7 @@ model User {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-	@@map("users")
+    @@map("users")
 }
 
 model Post {
@@ -31,7 +36,7 @@ model Post {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-	@@map("posts")
+    @@map("posts")
 }
 
 model Tag {
@@ -40,5 +45,5 @@ model Tag {
     slug  String @unique
     posts Post[]
 
-	@@map("tags")
+    @@map("tags")
 }

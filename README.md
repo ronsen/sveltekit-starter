@@ -20,19 +20,7 @@ Migrate the database:
 
 ```bash
 npx prisma migrate dev --name init
-```
-
-Database seeding:
-
-```bash
-npx prisma db seed
+npx prisma generate
 ```
 
 Create `/static/images` directory.
-
-Sign in with a sample user:
-
-```
-Username: admin
-Password: password
-```

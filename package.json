@@ -18,7 +18,7 @@
 		"@faker-js/faker": "^10.4.0",
 		"@lucide/svelte": "^1.18.0",
 		"@node-rs/argon2": "^2.0.2",
-		"@prisma/extension-accelerate": "^2.0.2",
+		"@prisma/extension-accelerate": "^3.0.0",
 		"@sveltejs/adapter-auto": "^7.0.1",
 		"@sveltejs/adapter-node": "^5.5.4",
 		"@sveltejs/kit": "^2.65.1",
@@ -26,17 +26,21 @@
 		"@tailwindcss/forms": "^0.5.11",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.1",
+		"@types/better-sqlite3": "^7.6.13",
 		"@types/node": "^25.9.3",
 		"marked": "^18.0.5",
-		"prisma": "^6.1.0",
+		"prisma": "^7.8.0",
 		"slugify": "^1.6.9",
 		"svelte": "^5.56.3",
 		"svelte-check": "^4.6.0",
 		"tailwindcss": "^4.3.1",
+		"tsx": "^4.22.4",
 		"typescript": "^6.0.3",
 		"vite": "^8.0.16"
 	},
 	"dependencies": {
-		"@prisma/client": "^6.1.0"
+		"@prisma/adapter-better-sqlite3": "^7.8.0",
+		"@prisma/client": "^7.8.0",
+		"dotenv": "^17.4.2"
 	}
 }
