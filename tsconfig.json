@@ -16,6 +16,7 @@
 		"ignoreDeprecations": "6.0",
 	},
 	"include": [
+		"**/*",
 		"prisma.config.ts"
 	]
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
