@@ -13,12 +13,8 @@
 		"moduleResolution": "bundler",
 		"module": "ESNext",
 		"target": "ES2023",
-		"ignoreDeprecations": "6.0",
-	},
-	"include": [
-		"**/*",
-		"prisma.config.ts"
-	]
+		"ignoreDeprecations": "6.0"
+	}
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
 	// except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
 	//
