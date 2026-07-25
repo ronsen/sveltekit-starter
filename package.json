@@ -38,12 +38,7 @@
 	"dependencies": {
 		"@prisma/adapter-better-sqlite3": "^7.8.0",
 		"@prisma/client": "^7.8.0",
+		"better-sqlite3": "^13.0.1",
 		"dotenv": "^17.4.2"
-	},
-	"allowScripts": {
-		"@prisma/engines@7.9.0": true,
-		"better-sqlite3@12.11.1": true,
-		"esbuild@0.28.1": true,
-		"prisma@7.9.0": true
 	}
 }
