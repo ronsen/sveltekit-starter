@@ -19,8 +19,15 @@ npm run dev
 Migrate the database:
 
 ```bash
+cp .env.example .env
 npx prisma migrate dev --name init
 npx prisma generate
+```
+
+To build this project, be sure to run `npx prisma generate` first then:
+
+```bash
+npm run build
 ```
 
 Create `/static/images` directory.
