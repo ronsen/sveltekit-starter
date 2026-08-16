@@ -23,10 +23,8 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # Prisma
-*.db
 /prisma/migrations
-/generated/prisma
+/src/generated/prisma
 
 /static/images
 
-/src/generated/prisma

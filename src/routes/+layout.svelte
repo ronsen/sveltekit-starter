@@ -35,7 +35,7 @@
 	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 </svelte:head>
 
-<main class="container md:w-[800px] px-8 mx-auto my-8">
+<main class="container md:w-200 px-8 mx-auto my-8">
 	<div class="flex justify-between items-center border-b pb-2 mb-8">
 		<h1 class="font-bold uppercase"><a href="/">Demo</a></h1>
 
