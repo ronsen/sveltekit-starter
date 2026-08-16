@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Post } from "@prisma/client";
+	import type { Post } from '$lib/../generated/prisma/client';
 	import { Pencil } from "@lucide/svelte";
 	import Alert from "$lib/components/alert.svelte";
 	import Delete from "./delete.svelte";

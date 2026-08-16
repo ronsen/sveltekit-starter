@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Pencil } from "@lucide/svelte";
 	import Delete from "$lib/components/delete.svelte";
-	import type { Tag } from "@prisma/client";
+	import type { Tag } from '$lib/../generated/prisma/client';
 
 	interface Post {
 		id: number;

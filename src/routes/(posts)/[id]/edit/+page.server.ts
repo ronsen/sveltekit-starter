@@ -3,7 +3,7 @@ import type { Actions, PageServerLoad } from "./$types";
 import { writeFileSync } from "fs";
 import slugify from 'slugify';
 import { db } from '$lib/database';
-import type { Post, Tag } from "@prisma/client";
+import type { Post, Tag } from '$lib/../generated/prisma/client';
 import { TagRepository } from '$lib/tags';
 
 export const load = (async ({ locals, params }) => {
