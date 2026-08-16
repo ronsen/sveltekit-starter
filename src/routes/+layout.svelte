@@ -32,7 +32,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<link rel="icon" href="./favicon.png" />
 </svelte:head>
 
 <main class="container md:w-200 px-8 mx-auto my-8">
