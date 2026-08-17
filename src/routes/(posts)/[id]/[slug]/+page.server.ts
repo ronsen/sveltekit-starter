@@ -3,11 +3,10 @@ import { db } from '$lib/database';
 import { redirect } from "@sveltejs/kit";
 import { marked } from "marked";
 
-export const load = (async ({ locals, params }) => {
+export const load = (async ({ params }) => {
 	const post = await db.post.findFirst({
 		where: {
 			AND: [
-				{ author: { id: locals.user.id } },
 				{ id: Number(params.id) },
 			]
 		},

@@ -9,22 +9,19 @@ import { TagRepository } from '$lib/tags';
 export const load = (async ({ locals, params }) => {
 	const post = await db.post.findFirst({
 		where: {
-			AND: [
-				{ author: { id: locals.user.id } },
-				{ id: Number(params.id) },
-			]
+			id: Number(params.id),
 		},
 		include: { tags: true }
 	}) as (Post & { tags: Tag[] }) | null;
 
-	if (!post) {
+	if (!post && locals.user!.id == post!.authorId) {
 		throw redirect(302, '/');
 	}
 
 	return {
 		post: {
 			...post,
-			tagcsv: post.tags.map((tag: Tag, i: number) => i == 0 ? tag.name : ' ' + tag.name)
+			tagcsv: post!.tags.map((tag: Tag, i: number) => i == 0 ? tag.name : ' ' + tag.name)
 		}
 	};
 }) satisfies PageServerLoad;

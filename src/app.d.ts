@@ -7,7 +7,7 @@ declare global {
 			user: {
 				id: number;
 				name: string;
-			};
+			} | null;
 		}
 		// interface PageData {}
 		// interface Platform {}

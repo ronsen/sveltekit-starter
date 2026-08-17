@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.q}</title>
+	<title>Search: {data.q}</title>
 </svelte:head>
 
 <Search q={data.q} />

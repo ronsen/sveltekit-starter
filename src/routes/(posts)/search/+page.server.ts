@@ -11,9 +11,6 @@ export const load = (async ({ locals, url }) => {
 				{ title: { contains: q } },
 				{ content: { contains: q } }
 			],
-			AND: [
-				{ authorId: locals.user.id },
-			]
 		},
 		take: 10,
 		skip: page == 1 ? 0 : (page - 1) * 10,

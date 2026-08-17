@@ -17,7 +17,7 @@ export const actions = {
 
 		await db.user.update({
 			where: {
-				id: locals.user.id
+				id: locals.user!.id
 			},
 			data: {
 				password,

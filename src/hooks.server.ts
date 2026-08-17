@@ -1,44 +1,63 @@
 import { redirect, type Handle } from "@sveltejs/kit";
 import { db } from "$lib/database";
 
-export const handle = (async ({ event, resolve }) => {
-	let theme: string = 'light';
+const PROTECTED_ROUTES = [
+	'/add',
+	'/edit',
+	'/delete'
+];
 
-	const session = event.cookies.get('session');
-	const newTheme = event.url.searchParams.get('theme');
-	const cookieTheme = event.cookies.get('theme');
-	const path = event.url.pathname;
+function isProtectedRoute(path: string) {
+	return PROTECTED_ROUTES.some(
+		(route) => path === route || path.endsWith(route)
+	);
+}
 
-	if (newTheme) {
-		theme = newTheme;
-	} else if (cookieTheme) {
-		theme = cookieTheme;
+async function getUser(session: string | undefined) {
+	if (!session) {
+		return null;
 	}
 
-	if (session) {
-		const user = await db.user.findUnique({
-			where: { token: session },
-			select: { id: true, username: true }
-		});
-
-		if (user) {
-			event.locals.user = {
-				id: user.id,
-				name: user.username
-			}
-		} else {
-			event.cookies.delete('session', { path: '/' });
+	return db.user.findUnique({
+		where: {
+			token: session
+		},
+		select: {
+			id: true,
+			username: true
 		}
+	});
+}
+
+export const handle = (async ({ event, resolve }) => {
+	const { cookies, url } = event;
+
+	const theme =
+		url.searchParams.get('theme') ??
+		cookies.get('theme') ??
+		'light';
+
+	const session = cookies.get('session');
+	const user = await getUser(session);
+
+	if (user) {
+		event.locals.user = {
+			id: user.id,
+			name: user.username
+		};
 	} else {
-		if (
-			path == '/' ||
-			/^\/\d/.test(path) ||
-			path.startsWith('/search') ||
-			path.startsWith('/tag')
-		) redirect(303, '/login');
+		event.locals.user = null;
+
+		if (session) {
+			cookies.delete('session', { path: '/' });
+		}
 	}
 
-	return await resolve(event, {
+	if (!event.locals.user && isProtectedRoute(event.url.pathname)) {
+		redirect(303, '/login');
+	}
+
+	return resolve(event, {
 		transformPageChunk: ({ html }) =>
 			html.replace('class=""', `class="${theme}"`)
 	});

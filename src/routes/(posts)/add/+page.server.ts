@@ -44,7 +44,7 @@ export const actions = {
 				photo: filename,
 				slug: slugify(title.trim().toLowerCase()),
 				content: content.trim(),
-				authorId: locals.user.id,
+				authorId: locals.user!.id,
 				tags: {
 					connect: [...ids]
 				}
