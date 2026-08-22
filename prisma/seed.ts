@@ -63,7 +63,7 @@ async function seed() {
 
 	// Create Posts
 	console.log('Creating posts...');
-	for (let i = 0; i < 15; i++) {
+	for (let i = 0; i < 100; i++) {
 		const title = faker.lorem.sentence({ min: 3, max: 7 }).replace(/\.$/, '');
 		const slug = slugify(title, { lower: true, strict: true }) + '-' + faker.string.alphanumeric(5);
 		const randomAuthor = sampleUsers[Math.floor(Math.random() * sampleUsers.length)];

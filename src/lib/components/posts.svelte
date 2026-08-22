@@ -25,7 +25,7 @@
 						class={buttonVariants({ variant: "ghost" })}
 						><Pencil size={16} /></a
 					>
-					<Delete title="{post.title}?" action="/{post.id}/delete" />
+					<Delete title={post.title} action="/{post.id}/delete" />
 				</div>
 			</div>
 		{/each}

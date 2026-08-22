@@ -13,9 +13,7 @@
 	<AlertDialog.Content>
 		<AlertDialog.Header>
 			<AlertDialog.Title>Delete this post?</AlertDialog.Title>
-			<AlertDialog.Description>
-				{@html title}
-			</AlertDialog.Description>
+			<AlertDialog.Description>{title}</AlertDialog.Description>
 		</AlertDialog.Header>
 		<AlertDialog.Footer>
 			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
