@@ -30,12 +30,7 @@ async function getUser(session: string | undefined) {
 }
 
 export const handle = (async ({ event, resolve }) => {
-	const { cookies, url } = event;
-
-	const theme =
-		url.searchParams.get('theme') ??
-		cookies.get('theme') ??
-		'light';
+	const { cookies } = event;
 
 	const session = cookies.get('session');
 	const user = await getUser(session);
@@ -57,8 +52,5 @@ export const handle = (async ({ event, resolve }) => {
 		redirect(303, '/login');
 	}
 
-	return resolve(event, {
-		transformPageChunk: ({ html }) =>
-			html.replace('class=""', `class="${theme}"`)
-	});
+	return resolve(event);
 }) satisfies Handle;

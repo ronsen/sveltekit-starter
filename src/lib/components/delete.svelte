@@ -1,41 +1,27 @@
 <script lang="ts">
-	import { enhance } from "$app/forms";
 	import { Trash } from "@lucide/svelte";
+	import * as AlertDialog from "$lib/components/ui/alert-dialog";
+	import { Button } from "$lib/components/ui/button";
 
-	let { action, message }: { action: string; message: string } = $props();
-
-	let dialog: HTMLDialogElement;
-
-	function close(event: Event) {
-		event.preventDefault();
-		dialog.close();
-	}
+	let { action, title }: { action: string; title: string } = $props();
 </script>
 
-<button
-	title="Delete Post"
-	class="cursor-pointer"
-	onclick={() => dialog.showModal()}><Trash size={16} /></button
->
-
-<dialog
-	bind:this={dialog}
-	class="m-auto shadow-sm border dark:border-zinc-700 dark:bg-zinc-800 dark:text-white/90 rounded-sm w-3/4 md:w-1/2 backdrop:backdrop-blur-sm"
->
-	<form {action} method="post" onsubmit={() => dialog.close()} use:enhance>
-		<div class="p-6">
-			<p>{@html message}</p>
-		</div>
-		<div
-			class="p-4 bg-zinc-50 dark:bg-zinc-900 w-full flex justify-end gap-4 text-sm"
-		>
-			<button class="hover:underline cursor-pointer" onclick={close}
-				>Cancel</button
-			>
-			<button
-				type="submit"
-				class="font-bold hover:underline cursor-pointer">Delete</button
-			>
-		</div>
-	</form>
-</dialog>
+<AlertDialog.Root>
+	<AlertDialog.Trigger>
+		<Button variant="ghost"><Trash size={16} /></Button>
+	</AlertDialog.Trigger>
+	<AlertDialog.Content>
+		<AlertDialog.Header>
+			<AlertDialog.Title>Delete this post?</AlertDialog.Title>
+			<AlertDialog.Description>
+				{@html title}
+			</AlertDialog.Description>
+		</AlertDialog.Header>
+		<AlertDialog.Footer>
+			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+			<form method="POST" {action}>
+				<AlertDialog.Action class="w-full">Delete</AlertDialog.Action>
+			</form>
+		</AlertDialog.Footer>
+	</AlertDialog.Content>
+</AlertDialog.Root>

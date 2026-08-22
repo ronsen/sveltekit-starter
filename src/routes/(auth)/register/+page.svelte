@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
-	import Alert from "$lib/components/alert.svelte";
 	import type { ActionData } from "./$types";
+	import { Button } from "$lib/components/ui/button";
+	import { Input } from "$lib/components/ui/input";
+	import Alert from "$lib/components/alert.svelte";
 
 	let { form }: { form: ActionData } = $props();
 </script>
@@ -11,12 +13,14 @@
 </svelte:head>
 
 {#if form?.error}
-	<Alert>{@html form?.message}</Alert>
+	<Alert>
+		{@html form?.message}
+	</Alert>
 {/if}
 
 <form method="post" use:enhance>
 	<div class="mb-3">
-		<input
+		<Input
 			type="text"
 			name="username"
 			placeholder="Username"
@@ -24,7 +28,7 @@
 		/>
 	</div>
 	<div class="mb-3">
-		<input
+		<Input
 			type="password"
 			name="password"
 			placeholder="Password"
@@ -32,6 +36,6 @@
 		/>
 	</div>
 	<div class="inline-flex items-center gap-3">
-		<button type="submit" class="btn">Register</button>
+		<Button type="submit" class="btn">Register</Button>
 	</div>
 </form>

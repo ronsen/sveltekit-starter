@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Pencil } from "@lucide/svelte";
 	import Delete from "$lib/components/delete.svelte";
-	import type { Tag } from '$lib/../generated/prisma/client';
+	import type { Tag } from "$lib/../generated/prisma/client";
+	import { Badge } from "$lib/components/ui/badge";
+	import { buttonVariants } from "$lib/components/ui/button";
 
 	interface Post {
 		id: number;
@@ -29,19 +31,19 @@
 		class="flex justify-between items-center border-b dark:border-zinc-700 pb-3 mb-3"
 	>
 		<div class="title font-bold">{data.post?.title}</div>
-		<div class="inline-flex gap-3">
-			<a href="/{data.post?.id}/edit" title="Edit"><Pencil size={16} /></a
+		<div class="inline-flex items-center">
+			<a
+				href="/{data.post?.id}/edit"
+				class={buttonVariants({ variant: "ghost" })}
+				><Pencil size={16} /></a
 			>
-			<Delete
-				message="Delete this post?"
-				action="/{data.post?.id}/delete"
-			/>
+			<Delete title={data.post.title} action="/{data.post?.id}/delete" />
 		</div>
 	</div>
 
 	{#if data.post?.photo}
 		<div class="flex justify-center mb-3">
-			<img src="/images/{data.post?.photo}" alt={data.post?.title} />
+			<img src={data.post?.photo} alt={data.post?.title} class="w-full" />
 		</div>
 	{/if}
 
@@ -52,11 +54,9 @@
 	{#if data.post?.tags}
 		<div class="flex justify-center gap-2">
 			{#each data.post?.tags as tag}
-				<div
-					class="bg-zinc-200 dark:bg-zinc-700 rounded-sm px-2 py-1 text-sm"
-				>
+				<Badge>
 					<a href="/tag/{tag.slug}">{tag.name}</a>
-				</div>
+				</Badge>
 			{/each}
 		</div>
 	{/if}

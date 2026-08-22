@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from "./$types";
-	import Navigation from "$lib/components/navigation.svelte";
+	import Navigation from "$lib/components/pagination.svelte";
 	import Posts from "$lib/components/posts.svelte";
 	import Search from "$lib/components/search.svelte";
 

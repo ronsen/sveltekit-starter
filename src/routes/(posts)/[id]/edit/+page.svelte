@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type { ActionData, PageServerData } from "./$types";
-	import Alert from "$lib/components/alert.svelte";
 	import { enhance } from "$app/forms";
+	import { Button } from "$lib/components/ui/button";
+	import { Input } from "$lib/components/ui/input";
+	import { Textarea } from "$lib/components/ui/textarea";
+	import Alert from "$lib/components/alert.svelte";
 
 	let { data, form }: { data: PageServerData; form: ActionData } = $props();
 </script>
@@ -17,7 +20,7 @@
 <form method="post" enctype="multipart/form-data" use:enhance>
 	<input type="hidden" name="id" value={data.post?.id} />
 	<div class="mb-3">
-		<input
+		<Input
 			type="text"
 			name="title"
 			placeholder="Title"
@@ -26,18 +29,13 @@
 		/>
 	</div>
 	<div class="mb-3">
-		<input type="file" name="file" accept="image/jpeg" />
+		<Input type="file" name="file" accept="image/jpeg" />
 	</div>
 	<div class="mb-3">
-		<textarea
-			name="content"
-			rows={10}
-			value={data.post?.content}
-			class="textarea"
-		></textarea>
+		<Textarea name="content" value={data.post?.content} />
 	</div>
 	<div class="mb-3">
-		<input
+		<Input
 			type="text"
 			name="tagcsv"
 			placeholder="Tags"
@@ -46,5 +44,5 @@
 		/>
 		<div class="mt-1 text-xs">Seperated by comma.</div>
 	</div>
-	<button type="submit" class="btn">Update</button>
+	<Button type="submit" class="btn">Update</Button>
 </form>

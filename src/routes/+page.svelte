@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from "./$types";
-	import Navigation from "$lib/components/navigation.svelte";
+	import Pagination from "$lib/components/pagination.svelte";
 	import Posts from "$lib/components/posts.svelte";
 	import Search from "$lib/components/search.svelte";
 
@@ -8,11 +8,11 @@
 </script>
 
 <svelte:head>
-	<title>Catatan</title>
+	<title>Demo</title>
 </svelte:head>
 
 <Search q="" />
 
 <Posts posts={data.posts} />
 
-<Navigation href="/?" prevPage={data.prevPage} nextPage={data.nextPage} />
+<Pagination href="/?" prevPage={data.prevPage} nextPage={data.nextPage} />

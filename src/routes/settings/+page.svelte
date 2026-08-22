@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { ActionData } from "./$types";
 	import { enhance } from "$app/forms";
+	import { Button } from "$lib/components/ui/button";
+	import { Input } from "$lib/components/ui/input";
 	import Alert from "$lib/components/alert.svelte";
 
 	let { form }: { form: ActionData } = $props();
@@ -16,14 +18,12 @@
 
 <form method="post" use:enhance>
 	<div class="mb-3">
-		<input
+		<Input
 			type="password"
 			name="password"
 			placeholder="Password"
 			class="input"
 		/>
 	</div>
-	<div class="inline-flex items-center gap-3">
-		<button type="submit" class="btn">Change Password</button>
-	</div>
+	<Button type="submit" class="btn">Change Password</Button>
 </form>

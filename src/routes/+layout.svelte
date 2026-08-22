@@ -1,72 +1,47 @@
 <script lang="ts">
-	import type { LayoutData, SubmitFunction } from "./$types";
+	import type { LayoutData } from "./$types";
 	import { enhance } from "$app/forms";
 	import { page } from "$app/state";
 	import type { Snippet } from "svelte";
-	import {
-		CirclePlus,
-		LogIn,
-		LogOut,
-		Moon,
-		Settings,
-		Sun,
-	} from "@lucide/svelte";
+	import { ModeWatcher } from "mode-watcher";
+	import { CirclePlus, LogIn, LogOut, Settings } from "@lucide/svelte";
+	import { Button, buttonVariants } from "$lib/components/ui/button";
 
 	import "./layout.css";
+	import Theme from "$lib/components/theme.svelte";
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
-
-	let theme = $state("");
-
-	$effect(() => {
-		theme = data.theme;
-	});
-
-	const updateTheme: SubmitFunction = ({ action }) => {
-		theme = action.searchParams.get("theme") ?? data.theme;
-
-		if (theme) {
-			document.documentElement.setAttribute("class", theme);
-		}
-	};
 </script>
 
 <svelte:head>
 	<link rel="icon" href="./favicon.png" />
 </svelte:head>
 
-<main class="container md:w-200 px-8 mx-auto my-8">
+<ModeWatcher />
+
+<main class="max-w-2xl px-6 mx-auto my-6">
 	<div class="flex justify-between items-center border-b pb-2 mb-8">
 		<h1 class="font-bold uppercase"><a href="/">Demo</a></h1>
 
-		<div class="inline-flex items-center gap-4">
+		<div class="inline-flex items-center">
+			<Theme />
+
 			{#if page.data.user}
-				<a href="/add" title="Add New Note"><CirclePlus size={16} /></a>
-				<a href="/settings" title="Settings"><Settings size={16} /></a>
+				<a href="/add" class={buttonVariants({ variant: "ghost" })}
+					><CirclePlus size={16} /></a
+				>
+				<a href="/settings" class={buttonVariants({ variant: "ghost" })}
+					><Settings size={16} /></a
+				>
 			{/if}
 
-			<form
-				method="post"
-				class="inline-flex gap-4"
-				use:enhance={updateTheme}
-			>
-				{#if theme == "dark"}
-					<button
-						class="cursor-pointer"
-						formaction="/?theme=light&redirectTo={page.url
-							.pathname}"><Moon size={16} /></button
-					>
-				{:else}
-					<button
-						class="cursor-pointer"
-						formaction="/?theme=dark&redirectTo={page.url.pathname}"
-						><Sun size={16} /></button
-					>
-				{/if}
-			</form>
-
 			{#if !page.data.user}
-				<a href="/login" title="Sign In"><LogIn size={16} /></a>
+				<a
+					href="/login"
+					title="Sign In"
+					class={buttonVariants({ variant: "ghost" })}
+					><LogIn size={16} /></a
+				>
 			{:else}
 				<form
 					method="POST"
@@ -74,10 +49,11 @@
 					class="inline-flex"
 					use:enhance
 				>
-					<button
+					<Button
 						type="submit"
 						class="cursor-pointer"
-						title="Sign Out"><LogOut size={16} /></button
+						variant="ghost"
+						title="Sign Out"><LogOut size={16} /></Button
 					>
 				</form>
 			{/if}
