@@ -1,5 +1,5 @@
-import { hash } from '@node-rs/argon2';
 import { faker } from '@faker-js/faker';
+import { hash } from 'bcrypt';
 import slugify from 'slugify';
 import { db } from '../src/lib/database';
 
@@ -14,12 +14,7 @@ async function seed() {
 
 	// Hashing standard password for seeded users
 	console.log('Hashing passwords...');
-	const hashedPassword = await hash('password', {
-		memoryCost: 19456,
-		timeCost: 2,
-		outputLen: 32,
-		parallelism: 1,
-	});
+	const hashedPassword = await hash('password', 12);
 
 	// Create Tags
 	console.log('Creating tags...');
@@ -27,10 +22,11 @@ async function seed() {
 	const createdTags = [];
 
 	for (const name of tagNames) {
+		const normalizedName = name.toLowerCase();
 		const tag = await db.tag.create({
 			data: {
-				name,
-				slug: slugify(name, { lower: true, strict: true }),
+				name: normalizedName,
+				slug: slugify(normalizedName, { lower: true, strict: true }),
 			},
 		});
 		createdTags.push(tag);

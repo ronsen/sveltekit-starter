@@ -1,7 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { db } from '$lib/database';
-import { verify } from '@node-rs/argon2';
+import { compare } from 'bcrypt';
 
 export const actions = {
 	default: async ({ cookies, request }) => {
@@ -24,12 +24,7 @@ export const actions = {
 				message: 'User not exists.'
 			});
 		} else {
-			const validPassword = await verify(user.password, password, {
-				memoryCost: 19456,
-				timeCost: 2,
-				outputLen: 32,
-				parallelism: 1,
-			});
+			const validPassword = await compare(password, user.password);
 
 			if (!validPassword) {
 				return fail(400, {
