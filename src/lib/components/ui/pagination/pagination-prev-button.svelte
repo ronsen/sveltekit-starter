@@ -13,7 +13,7 @@
 </script>
 
 {#snippet Fallback()}
-	<ChevronLeftIcon class={cn("size-4", className)} />
+	<ChevronLeftIcon class={cn("cn-rtl-flip size-4", className)} />
 	<span>Previous</span>
 {/snippet}
 

@@ -14,7 +14,7 @@
 
 {#snippet Fallback()}
 	<span>Next</span>
-	<ChevronRightIcon class={cn("size-4", className)} />
+	<ChevronRightIcon class={cn("cn-rtl-flip size-4", className)} />
 {/snippet}
 
 <PaginationPrimitive.NextButton

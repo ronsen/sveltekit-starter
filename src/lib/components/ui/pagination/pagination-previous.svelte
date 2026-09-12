@@ -21,6 +21,6 @@
 	)}
 	{...restProps}
 >
-	<ChevronLeftIcon data-icon="inline-start" />
-	<span class="cn-pagination-previous-text hidden sm:block">Previous</span>
+	<ChevronLeftIcon data-icon="inline-start" class="cn-rtl-flip" />
+	<span class="hidden sm:block">Previous</span>
 </PaginationPrimitive.PrevButton>
